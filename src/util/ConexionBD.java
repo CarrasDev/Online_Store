@@ -10,7 +10,7 @@ public class ConexionBD {
 
     private static final String URL = "jdbc:mysql://localhost:3306/onlinestore?useSSL=false&serverTimezone=UTC";
     private static final String USUARIO = "root";
-    private static final String PASSWORD = "Password";
+    private static final String PASSWORD = "Salchichas84";
 
     // Metodo para obtener una conexión
     public static Connection getConexion() throws SQLException {
