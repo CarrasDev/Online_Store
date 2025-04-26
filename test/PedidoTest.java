@@ -1,3 +1,5 @@
+package test;
+
 import modelo.Articulo;
 import modelo.cliente.Cliente;
 import modelo.cliente.ClienteEstandar;
