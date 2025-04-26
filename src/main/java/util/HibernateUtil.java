@@ -1,8 +1,7 @@
 package util;
 
 import org.hibernate.SessionFactory;
-
-import java.lang.module.Configuration;
+import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
 
