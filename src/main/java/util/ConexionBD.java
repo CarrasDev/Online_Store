@@ -8,9 +8,11 @@ import java.sql.Statement;
 
 public class ConexionBD {
 
+    // TODO Esta clase se debe eliminar y usar HibernateUtiles para conectarse a la BBDD
+
     private static final String URL = "jdbc:mysql://localhost:3306/onlinestore?useSSL=false&serverTimezone=UTC";
     private static final String USUARIO = "root";
-    private static final String PASSWORD = "Salchichas84";
+    private static final String PASSWORD = "TU_CONTRASEÑA";
 
     // Metodo para obtener una conexión
     public static Connection getConexion() throws SQLException {
