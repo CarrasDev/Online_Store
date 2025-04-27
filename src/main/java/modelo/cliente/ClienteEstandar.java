@@ -13,11 +13,12 @@ public class ClienteEstandar extends Cliente {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipoCliente", nullable = false)
-    private final TipoCliente tipoCliente;
+    private TipoCliente tipoCliente;
 
-    // TODO verificar uso de super() en el constructor
     // Contructor para Hibernate
-    public ClienteEstandar() {}
+    public ClienteEstandar() {
+        super();
+    }
 
     // Constructor para la vista sin ID asignado
     public ClienteEstandar(String nombre, String domicilio, String nif, String email) {

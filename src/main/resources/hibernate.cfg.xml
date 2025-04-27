@@ -19,7 +19,9 @@
 
     <!-- Mapeo de Entidades -->
     <mapping class="modelo.Articulo" />
-    <mapping class="modelo.cliente.Cliente" /> <!-- Seguro que hay que hacer Cliente Estandar y Cliente Premium -->
+    <mapping class="modelo.cliente.Cliente" />
+    <mapping class="modelo.cliente.ClienteEstandar" />
+    <mapping class="modelo.cliente.ClientePremium" />
     <mapping class="modelo.Pedido" />
 
   </session-factory>

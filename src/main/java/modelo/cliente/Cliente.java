@@ -1,8 +1,6 @@
 // Grupo 2 - SQL SQUAD
 
-
 package modelo.cliente;
-
 
 import jakarta.persistence.*;
 
@@ -29,6 +27,8 @@ public abstract class Cliente {
     @Column(name = "email", nullable = false, unique = true, length = 30)
     private String email;
 
+    // Constructor para Hibernate
+    public Cliente() {}
 
     public Cliente(Integer id, String nombre, String domicilio, String nif, String email) {
         this.id = id;
