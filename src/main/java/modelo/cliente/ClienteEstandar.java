@@ -8,7 +8,7 @@ import modelo.enums.TipoCliente;
 
 
 @Entity
-@DiscriminatorValue("ESTANDAR")
+@DiscriminatorValue("ESTANDAR") // Mapeo en tabla unica "clientes"
 public class ClienteEstandar extends Cliente {
 
     @Enumerated(EnumType.STRING)

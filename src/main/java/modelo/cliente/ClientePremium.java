@@ -9,7 +9,7 @@ import modelo.enums.TipoCliente;
 
 
 @Entity
-@DiscriminatorValue("PREMIUM")
+@DiscriminatorValue("PREMIUM") // Mapeo en tabla unica "clientes"
 public class ClientePremium extends Cliente {
 
     @Column(name = "descuento", nullable = true)
