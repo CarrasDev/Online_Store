@@ -9,7 +9,7 @@
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
     <property name="connection.url">jdbc:mysql://localhost:3306/onlinestore</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">tu_contraseña</property>
+    <property name="hibernate.connection.password">Salchichas84</property>
 
     <!-- Configuración de Hibernate -->
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -18,10 +18,9 @@
     <property name="hibernate.hbm2ddl.auto">validate</property> <!-- create, update, validate, none -->
 
     <!-- Mapeo de Entidades -->
-    <!--
-    <mapping class="Articulo" />
-    <mapping class="Cliente" />
-    <mapping class="Pedido" />
-    -->
+    <mapping class="modelo.Articulo" />
+    <mapping class="modelo.cliente.Cliente" /> <!-- Seguro que hay que hacer Cliente Estandar y Cliente Premium -->
+    <mapping class="modelo.Pedido" />
+
   </session-factory>
 </hibernate-configuration>
