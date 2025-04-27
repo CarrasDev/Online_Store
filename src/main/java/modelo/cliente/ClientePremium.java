@@ -3,14 +3,29 @@
 
 package modelo.cliente;
 
-import modelo.Articulo;
+import jakarta.persistence.*;
 import modelo.enums.TipoCliente;
 
+
+
+@Entity
+@DiscriminatorValue("PREMIUM") // Mapeo en tabla unica "clientes"
 public class ClientePremium extends Cliente {
 
+    @Column(name = "descuento", nullable = true)
     private int descuento;
+
+    @Column(name = "cuotaAnual", nullable = true)
     private Float cuotaAnual;
-    private final TipoCliente tipoCliente;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipoCliente", nullable = false)
+    private TipoCliente tipoCliente;
+
+    //Constructor para Hibernate
+    public ClientePremium() {
+        super();
+    }
 
     // Constructor para la vista sin ID asignado
     public ClientePremium(String nombre, String domicilio, String nif, String email) {

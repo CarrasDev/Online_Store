@@ -3,11 +3,22 @@
 
 package modelo.cliente;
 
+import jakarta.persistence.*;
 import modelo.enums.TipoCliente;
 
+
+@Entity
+@DiscriminatorValue("ESTANDAR") // Mapeo en tabla unica "clientes"
 public class ClienteEstandar extends Cliente {
 
-    private final TipoCliente tipoCliente;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipoCliente", nullable = false)
+    private TipoCliente tipoCliente;
+
+    // Contructor para Hibernate
+    public ClienteEstandar() {
+        super();
+    }
 
     // Constructor para la vista sin ID asignado
     public ClienteEstandar(String nombre, String domicilio, String nif, String email) {

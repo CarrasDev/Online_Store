@@ -5,8 +5,6 @@ package modelo;
 import jakarta.persistence.*;
 
 
-// TODO Verificar correcta implementación del mapeo de la BBDD a la clase Articulo
-
 @Entity
 @Table(name = "articulo")
 public class Articulo {

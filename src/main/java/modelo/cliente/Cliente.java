@@ -1,14 +1,34 @@
 // Grupo 2 - SQL SQUAD
 
-
 package modelo.cliente;
 
-public class Cliente {
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "cliente")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)  // Nos permite implementar toda la herencia en una sola tabla
+@DiscriminatorColumn(name = "tipoCliente", discriminatorType = DiscriminatorType.STRING) // Discriminamos por tipo de cliente
+public abstract class Cliente {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idCliente", nullable = false)
     private Integer id;
+
+    @Column(name = "nombre", nullable = false, length = 70)
     private String nombre;
+
+    @Column(name = "domicilio", nullable = false, length = 100)
     private String domicilio;
+
+    @Column(name = "nif", nullable = false, length = 20)
     private String nif;
+
+    @Id
+    @Column(name = "email", nullable = false, unique = true, length = 30)
     private String email;
+
+    // Constructor para Hibernate
+    public Cliente() {}
 
     public Cliente(Integer id, String nombre, String domicilio, String nif, String email) {
         this.id = id;
