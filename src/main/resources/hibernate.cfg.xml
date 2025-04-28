@@ -15,7 +15,9 @@
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.show_sql">true</property> <!-- Pasar a false en version definitiva -->
     <property name="hibernate.format_sql">true</property> <!-- Pasar a false en version definitiva -->
-    <property name="hibernate.hbm2ddl.auto">validate</property> <!-- create, update, validate, none -->
+    <property name="hibernate.hbm2ddl.auto">create</property> <!-- create, update, validate, none TODO poner en validate -->
+    <property name="hibernate.connection.autocommit">false</property>
+    <property name="hibernate.transaction.coordinator_class">jdbc</property>
 
     <!-- Mapeo de Entidades -->
     <mapping class="modelo.Articulo" />

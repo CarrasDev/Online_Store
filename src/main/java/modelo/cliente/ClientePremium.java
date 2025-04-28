@@ -18,8 +18,8 @@ public class ClientePremium extends Cliente {
     @Column(name = "cuotaAnual", nullable = true)
     private Float cuotaAnual;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "tipoCliente", nullable = false)
+    // No hay que usar esta sentencia @Enumerated(EnumType.STRING) porque generamos conflicto con @Inheritance
+    // TODO Verificar @Column(name = "tipoCliente", insertable = false, updatable = false) // Gestiona Hibernate
     private TipoCliente tipoCliente;
 
     //Constructor para Hibernate
@@ -50,6 +50,7 @@ public class ClientePremium extends Cliente {
     public void setDescuento(int descuento) {
         this.descuento = descuento;
     }
+
     public TipoCliente getTipoCliente() {
         return tipoCliente;
     }

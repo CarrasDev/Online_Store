@@ -42,10 +42,11 @@ public class ClienteDAO implements IDao<Cliente> {
             session.persist(o);
             transaction.commit();
         } catch (Exception e) {
-            if (transaction != null) {
+            if (transaction != null && transaction.isActive()) {  // TODO Pendiente verificar &&
                 transaction.rollback();
             }
             System.err.println("Error al guardar cliente " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
