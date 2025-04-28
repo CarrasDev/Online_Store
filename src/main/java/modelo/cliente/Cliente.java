@@ -10,7 +10,7 @@ import jakarta.persistence.*;
 @DiscriminatorColumn(name = "tipoCliente", discriminatorType = DiscriminatorType.STRING) // Discriminamos por tipo de cliente
 public abstract class Cliente {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // No podemos usar @GeneratedValue si no es primaria. La BBDD gestionará este punto sin interferencia con Hibernate
     @Column(name = "idCliente", nullable = false)
     private Integer id;
 
