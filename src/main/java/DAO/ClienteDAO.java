@@ -2,6 +2,7 @@ package DAO;
 
 import modelo.cliente.Cliente;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class ClienteDAO implements IDao<Cliente> {
         return Optional.empty();
     }
 
+
     @Override
     public List<Cliente> getAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -31,21 +33,51 @@ public class ClienteDAO implements IDao<Cliente> {
         return List.of();
     }
 
-    // TODO Pendiente de implementar
+
     @Override
     public void save(Object o) {
-
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.persist(o);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.err.println("Error al guardar cliente " + e.getMessage());
+        }
     }
 
-    // TODO Pendiente de implementar
+
     @Override
     public void update(Cliente cliente) {
-
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.update(cliente);   // TODO Quizas deberia usar merge?
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.err.println("Error al actualizar cliente " + e.getMessage());
+        }
     }
 
-    // TODO Pendiente de implementar
+
     @Override
     public void delete(Cliente cliente) {
-
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.delete(cliente);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.err.println("Error al eliminar cliente " + e.getMessage());
+        }
     }
 }
