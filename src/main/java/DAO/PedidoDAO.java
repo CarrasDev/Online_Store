@@ -2,6 +2,7 @@ package DAO;
 
 import modelo.Pedido;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class PedidoDAO implements IDao<Pedido> {
 
     @Override
     public List<Pedido> getAll() {
-        // TODO Pendiente implementar
+
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("FROM Pedido", Pedido.class).getResultList(); // JPA
         } catch (Exception e) {
@@ -36,7 +37,18 @@ public class PedidoDAO implements IDao<Pedido> {
 
     @Override
     public void save(Pedido pedido) {
-        // TODO Pendiente implementar
+
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.persist(pedido);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+            System.err.println("Error al guardar el pedido en la BBDD" + e.getMessage());
+        }
     }
 
     @Override
