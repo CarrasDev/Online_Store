@@ -11,10 +11,6 @@ import modelo.enums.TipoCliente;
 @DiscriminatorValue("ESTANDAR") // Mapeo en tabla unica "clientes"
 public class ClienteEstandar extends Cliente {
 
-    // No hay que usar esta sentencia @Enumerated(EnumType.STRING) porque generamos conflicto con @Inheritance
-    // @Column(name = "tipoCliente", insertable = false, updatable = false)
-    // private TipoCliente tipoCliente;
-
     // Contructor para Hibernate
     public ClienteEstandar() {
         super();
