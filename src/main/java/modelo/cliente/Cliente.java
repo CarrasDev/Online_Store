@@ -3,6 +3,7 @@
 package modelo.cliente;
 
 import jakarta.persistence.*;
+import modelo.enums.TipoCliente;
 
 @Entity
 @Table(name = "cliente")
@@ -13,6 +14,11 @@ public abstract class Cliente {
     // No podemos usar @GeneratedValue si no es primaria. La BBDD gestionará este punto sin interferencia con Hibernate
     // @Column(name = "idCliente", nullable = false)
     // private Integer id;
+
+    // TODO Verificar esta modificación
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipoCliente", nullable = false, insertable = false, updatable = false)
+    private TipoCliente tipoCliente;  // TODO Controlar
 
     @Column(name = "nombre", nullable = false, length = 70)
     private String nombre;
@@ -30,12 +36,14 @@ public abstract class Cliente {
     // Constructor para Hibernate
     public Cliente() {}
 
-    public Cliente(String nombre, String domicilio, String nif, String email) {
+    // TODO Verificar constructor con tipo de cliente
+    public Cliente(String nombre, String domicilio, String nif, String email, TipoCliente tipoCliente) {
         // this.id = id;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.nif = nif;
         this.email = email;
+        this.tipoCliente = tipoCliente;
     }
 
     /*
