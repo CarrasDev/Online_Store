@@ -7,7 +7,7 @@ public interface IDao<T> {
 
     Optional<T> getById(String id);
     Collection<T> getAll();
-    void save(Object o);
+    void save(T t);
     void update(T t);
     void delete(T t);
 }

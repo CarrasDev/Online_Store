@@ -35,11 +35,11 @@ public class ClienteDAO implements IDao<Cliente> {
 
 
     @Override
-    public void save(Object o) {
+    public void save(Cliente cliente) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.persist(o);
+            session.persist(cliente);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive()) {  // TODO Pendiente verificar &&

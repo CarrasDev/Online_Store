@@ -79,26 +79,8 @@ public class PedidoDAO implements IDao<Pedido> {
     }
 
     @Override
-    public void save(Object o) {
+    public void save(Pedido pedido) {
 
-        if (o instanceof Pedido) {
-            Pedido pedido = (Pedido) o;
-
-            try (Connection conexion = ConexionBD.getConexion()) {
-                String sql = "INSERT INTO pedido (codigoArticulo, emailCliente, cantidadArticulos, precioTotal, fechaPedido, estado) " +
-                        "VALUES (?, ?, ?, ?, ?, ?)";
-                PreparedStatement stmt = conexion.prepareStatement(sql);
-                stmt.setString(1, pedido.getArticulo().getCodigoArticulo());
-                stmt.setString(2, pedido.getCliente().getEmail());
-                stmt.setInt(3, pedido.getCantidadArticulos());
-                stmt.setDouble(4, pedido.getPrecioTotal());
-                stmt.setTimestamp(5, Timestamp.valueOf(pedido.getFechaPedido()));
-                stmt.setString(6, pedido.getEstado().name());
-                stmt.executeUpdate();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     @Override
