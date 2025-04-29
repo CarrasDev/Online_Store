@@ -29,12 +29,13 @@ public class ClientePremium extends Cliente {
 
     // Constructor para la vista sin ID asignado
     public ClientePremium(String nombre, String domicilio, String nif, String email) {
-        super(null, nombre, domicilio, nif, email);
+        super(nombre, domicilio, nif, email); // TODO Habia ID
         this.descuento = 20;
         this.cuotaAnual = 30.0f;
         this.tipoCliente = TipoCliente.PREMIUM;
     }
 
+    /* // TODO Controlar id
     // Constructor para gestión con ID de la BBDD
     public ClientePremium(Integer id, String nombre, String domicilio, String nif,
                           String email, Integer descuento, Float cuotaAnual) {
@@ -42,7 +43,7 @@ public class ClientePremium extends Cliente {
         this.descuento = descuento;
         this.cuotaAnual = cuotaAnual;
         this.tipoCliente = TipoCliente.PREMIUM;
-    }
+    }*/
 
     public int getDescuento() {
         return descuento;

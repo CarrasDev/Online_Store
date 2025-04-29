@@ -11,8 +11,8 @@ import jakarta.persistence.*;
 public abstract class Cliente {
 
     // No podemos usar @GeneratedValue si no es primaria. La BBDD gestionará este punto sin interferencia con Hibernate
-    @Column(name = "idCliente", nullable = false)
-    private Integer id;
+    // @Column(name = "idCliente", nullable = false)
+    // private Integer id;
 
     @Column(name = "nombre", nullable = false, length = 70)
     private String nombre;
@@ -30,22 +30,25 @@ public abstract class Cliente {
     // Constructor para Hibernate
     public Cliente() {}
 
-    public Cliente(Integer id, String nombre, String domicilio, String nif, String email) {
-        this.id = id;
+    public Cliente(String nombre, String domicilio, String nif, String email) {
+        // this.id = id;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.nif = nif;
         this.email = email;
     }
 
+    /*
     // Sobrecarga del constructor para gestión sin número de cliente. BBDD Asignará el Nº de cliente
     public Cliente(String nombre, String domicilio, String nif, String email) {
         this(null, nombre, domicilio, nif, email);
-    }
+    }*/
 
+    /* // TODO Controlar id
     public Integer getId(){
         return id;
     }
+     */
     public String getNombre() {
         return nombre;
     }
@@ -58,7 +61,7 @@ public abstract class Cliente {
     public String getEmail() {
         return email;
     }
-    public void setId(int id) {this.id = id;}
+    // public void setId(int id) {this.id = id;} // TODO Controlar id
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -74,6 +77,6 @@ public abstract class Cliente {
 
     @Override
     public String toString() {
-        return "Id: " + id + " Nombre: " + nombre + " Domicilio: " + domicilio + " Nif: " + nif + " Email: " + email;
+        return "Nombre: " + nombre + " Domicilio: " + domicilio + " Nif: " + nif + " Email: " + email;
     }
 }
