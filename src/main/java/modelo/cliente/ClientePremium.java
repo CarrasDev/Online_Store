@@ -19,8 +19,8 @@ public class ClientePremium extends Cliente {
     private Float cuotaAnual;
 
     // No hay que usar esta sentencia @Enumerated(EnumType.STRING) porque generamos conflicto con @Inheritance
-    @Column(name = "tipoCliente", insertable = false, updatable = false) // Gestiona Hibernate // TODO Controlar
-    private TipoCliente tipoCliente;
+    // @Column(name = "tipoCliente", insertable = false, updatable = false) // Gestiona Hibernate // TODO Controlar
+    // private TipoCliente tipoCliente;
 
     //Constructor para Hibernate
     public ClientePremium() {
@@ -29,12 +29,13 @@ public class ClientePremium extends Cliente {
 
     // Constructor para la vista sin ID asignado
     public ClientePremium(String nombre, String domicilio, String nif, String email) {
-        super(null, nombre, domicilio, nif, email);
+        super(nombre, domicilio, nif, email, TipoCliente.PREMIUM); // TODO Habia ID
         this.descuento = 20;
         this.cuotaAnual = 30.0f;
-        this.tipoCliente = TipoCliente.PREMIUM;
+        // this.tipoCliente = TipoCliente.PREMIUM;
     }
 
+    /* // TODO Controlar id
     // Constructor para gestión con ID de la BBDD
     public ClientePremium(Integer id, String nombre, String domicilio, String nif,
                           String email, Integer descuento, Float cuotaAnual) {
@@ -42,7 +43,7 @@ public class ClientePremium extends Cliente {
         this.descuento = descuento;
         this.cuotaAnual = cuotaAnual;
         this.tipoCliente = TipoCliente.PREMIUM;
-    }
+    }*/
 
     public int getDescuento() {
         return descuento;
@@ -51,8 +52,9 @@ public class ClientePremium extends Cliente {
         this.descuento = descuento;
     }
 
+    // TODO Realizar implementación super()
     public TipoCliente getTipoCliente() {
-        return tipoCliente;
+        return TipoCliente.PREMIUM;
     }
 
     public Float getCuotaAnual() {
@@ -68,6 +70,6 @@ public class ClientePremium extends Cliente {
 
     @Override
     public String toString() {
-        return super.toString() + " Descuento: " + descuento + " Tipo: " + tipoCliente;
+        return super.toString() + " Descuento: " + descuento + " Tipo: " + TipoCliente.PREMIUM;
     }
 }

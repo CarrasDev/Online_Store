@@ -12,8 +12,8 @@ import modelo.enums.TipoCliente;
 public class ClienteEstandar extends Cliente {
 
     // No hay que usar esta sentencia @Enumerated(EnumType.STRING) porque generamos conflicto con @Inheritance
-    @Column(name = "tipoCliente", insertable = false, updatable = false) // Gestiona Hibernate // TODO Controlar
-    private TipoCliente tipoCliente;
+    // @Column(name = "tipoCliente", insertable = false, updatable = false)
+    // private TipoCliente tipoCliente;
 
     // Contructor para Hibernate
     public ClienteEstandar() {
@@ -22,22 +22,15 @@ public class ClienteEstandar extends Cliente {
 
     // Constructor para la vista sin ID asignado
     public ClienteEstandar(String nombre, String domicilio, String nif, String email) {
-        super(null, nombre, domicilio, nif, email);
-        this.tipoCliente = TipoCliente.ESTANDAR;
-    }
-
-    // Constructor para la gestíon con ID de la BBDD
-    public ClienteEstandar(Integer id, String nombre, String domicilio, String nif, String email) {
-        super(id, nombre, domicilio, nif, email);
-        this.tipoCliente = TipoCliente.ESTANDAR;
+        super(nombre, domicilio, nif, email, TipoCliente.ESTANDAR);
     }
 
     public TipoCliente getTipoCliente() {
-        return tipoCliente;
+        return TipoCliente.ESTANDAR;
     }
 
     @Override
     public String toString() {
-        return super.toString() + " Tipo: " + tipoCliente;
+        return super.toString() + " Tipo: " + TipoCliente.ESTANDAR;
     }
 }
