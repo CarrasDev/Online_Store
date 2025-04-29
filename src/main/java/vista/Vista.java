@@ -1,6 +1,8 @@
 package vista;
 
 import controlador.Controlador;
+import util.HibernateUtil;
+
 import java.util.Scanner;
 
 public class Vista {
@@ -39,7 +41,10 @@ public class Vista {
                 case 1 -> menuGestionArticulos();
                 case 2 -> menuGestionClientes();
                 case 3 -> menuGestionPedidos();
-                case 0 -> System.out.println("Saliendo del programa...");
+                case 0 -> {
+                    System.out.println("Saliendo del programa...");
+                    HibernateUtil.shutdown(); // Cerrar conexión BBDD
+                }
                 default -> System.out.println("Opción no válida. Intente de nuevo.");
             }
         } while (opcion != 0);
