@@ -69,7 +69,7 @@ public class PedidoDAO implements IDao<Pedido> {
 
     @Override
     public void delete(Pedido pedido) {
-        
+
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
