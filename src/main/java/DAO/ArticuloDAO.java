@@ -17,7 +17,7 @@ public class ArticuloDAO implements IDao<Articulo> {
             Articulo articulo = session.get(Articulo.class, codigo);
             return Optional.ofNullable(articulo);
         } catch (Exception e) {
-            System.err.println("Error al acceder a la BBDD con email: " + mail + " " + e.getMessage());
+            System.err.println("Error al acceder a la BBDD con email: " + codigo + " " + e.getMessage());
         }
         return Optional.empty();
     }
@@ -58,7 +58,7 @@ public class ArticuloDAO implements IDao<Articulo> {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.update(articulo);
+            session.merge(articulo);  // update() ya no se usa.
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -75,7 +75,7 @@ public class ArticuloDAO implements IDao<Articulo> {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.delete(articulo);
+            session.remove(articulo);  // delete() ya no se usa.
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

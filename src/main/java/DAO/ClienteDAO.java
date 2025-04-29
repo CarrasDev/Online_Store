@@ -56,7 +56,7 @@ public class ClienteDAO implements IDao<Cliente> {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.update(cliente);   // TODO Quizas deberia usar merge?
+            session.merge(cliente);   // update() ya no se usa.
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -72,7 +72,7 @@ public class ClienteDAO implements IDao<Cliente> {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.delete(cliente);
+            session.remove(cliente); // delete() ya no se usa.
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
