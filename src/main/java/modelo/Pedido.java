@@ -68,7 +68,7 @@ public class Pedido {
         // Calcular gastos de envío
         double gastosEnvio;
         if (cliente instanceof ClientePremium clientePremium) {
-            gastosEnvio = articulo.getGastosEnvio() * (clientePremium.getDescuento() / 100.0);
+            gastosEnvio = articulo.getGastosEnvio() * (1.0 - clientePremium.getDescuento() / 100.0);
         } else {
             gastosEnvio = articulo.getGastosEnvio();
         }

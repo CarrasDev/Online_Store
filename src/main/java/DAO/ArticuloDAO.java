@@ -26,7 +26,7 @@ public class ArticuloDAO implements IDao<Articulo> {
     @Override
     public List<Articulo> getAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            List<Articulo> listaArticulos = session.createQuery("FROM Articulo", Articulo.class).list(); // TODO Pendiente verificar uso
+            List<Articulo> listaArticulos = session.createQuery("FROM Articulo", Articulo.class).getResultList(); // JPA
             return listaArticulos;
         } catch (Exception e) {
             System.err.println("Error al acceder a toda la BBDD " + e.getMessage());

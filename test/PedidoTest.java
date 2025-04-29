@@ -70,7 +70,7 @@ class PedidoTest{
         Pedido pedido = new Pedido(articulo, 2, clientePremium, LocalDateTime.now(), TipoEstado.PENDIENTE);
 
         // Cálculo esperado:
-        double totalEsperado = (50 * (20 / 100.0)) + (100 * 2);
+        double totalEsperado = (50 * (1.0 - (20 / 100.0))) + (100 * 2);
 
         // Prueba
         assertEquals(totalEsperado, pedido.calcularTotal(), 0.01);
