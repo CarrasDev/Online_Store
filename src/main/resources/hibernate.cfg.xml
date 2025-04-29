@@ -16,6 +16,7 @@
     <property name="hibernate.transaction.coordinator_class">jdbc</property>
     <property name="hibernate.show_sql">false</property> <!-- TODO Pasar a false en version definitiva -->
     <property name="hibernate.format_sql">false</property> <!-- TODO Pasar a false en version definitiva -->
+    <property name="hibernate.use_sql_comments">false</property> <!-- TODO Pasar a false en version definitiva -->
     <property name="hibernate.hbm2ddl.auto">validate</property> <!-- create, update, validate, none TODO poner en validate -->
     <property name="hibernate.connection.autocommit">false</property>
 
