@@ -11,7 +11,7 @@ public class Main {
         Modelo modelo = new Modelo();
         Vista vista = new Vista();
         Controlador controlador = new Controlador(modelo, vista);
-        HibernateUtil.getSessionFactory().openSession(); // TODO Probando
+        HibernateUtil.getSessionFactory().openSession();
         vista.startVista(controlador);
     }
 }
