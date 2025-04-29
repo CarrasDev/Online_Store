@@ -18,10 +18,6 @@ public class ClientePremium extends Cliente {
     @Column(name = "cuotaAnual", nullable = true)
     private Float cuotaAnual;
 
-    // No hay que usar esta sentencia @Enumerated(EnumType.STRING) porque generamos conflicto con @Inheritance
-    // @Column(name = "tipoCliente", insertable = false, updatable = false) // Gestiona Hibernate // TODO Controlar
-    // private TipoCliente tipoCliente;
-
     //Constructor para Hibernate
     public ClientePremium() {
         super();
@@ -29,30 +25,19 @@ public class ClientePremium extends Cliente {
 
     // Constructor para la vista sin ID asignado
     public ClientePremium(String nombre, String domicilio, String nif, String email) {
-        super(nombre, domicilio, nif, email, TipoCliente.PREMIUM); // TODO Habia ID
+        super(nombre, domicilio, nif, email, TipoCliente.PREMIUM);
         this.descuento = 20;
         this.cuotaAnual = 30.0f;
-        // this.tipoCliente = TipoCliente.PREMIUM;
     }
-
-    /* // TODO Controlar id
-    // Constructor para gestión con ID de la BBDD
-    public ClientePremium(Integer id, String nombre, String domicilio, String nif,
-                          String email, Integer descuento, Float cuotaAnual) {
-        super(id, nombre, domicilio, nif, email);
-        this.descuento = descuento;
-        this.cuotaAnual = cuotaAnual;
-        this.tipoCliente = TipoCliente.PREMIUM;
-    }*/
 
     public int getDescuento() {
         return descuento;
     }
+
     public void setDescuento(int descuento) {
         this.descuento = descuento;
     }
 
-    // TODO Realizar implementación super()
     public TipoCliente getTipoCliente() {
         return TipoCliente.PREMIUM;
     }
