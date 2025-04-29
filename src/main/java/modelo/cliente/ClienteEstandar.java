@@ -12,7 +12,7 @@ import modelo.enums.TipoCliente;
 public class ClienteEstandar extends Cliente {
 
     // No hay que usar esta sentencia @Enumerated(EnumType.STRING) porque generamos conflicto con @Inheritance
-    //TODO verificar @Column(name = "tipoCliente", insertable = false, updatable = false) // Gestiona Hibernate
+    @Column(name = "tipoCliente", insertable = false, updatable = false) // Gestiona Hibernate // TODO Controlar
     private TipoCliente tipoCliente;
 
     // Contructor para Hibernate

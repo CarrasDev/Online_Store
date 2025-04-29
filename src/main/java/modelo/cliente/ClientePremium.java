@@ -19,7 +19,7 @@ public class ClientePremium extends Cliente {
     private Float cuotaAnual;
 
     // No hay que usar esta sentencia @Enumerated(EnumType.STRING) porque generamos conflicto con @Inheritance
-    // TODO Verificar @Column(name = "tipoCliente", insertable = false, updatable = false) // Gestiona Hibernate
+    @Column(name = "tipoCliente", insertable = false, updatable = false) // Gestiona Hibernate // TODO Controlar
     private TipoCliente tipoCliente;
 
     //Constructor para Hibernate
