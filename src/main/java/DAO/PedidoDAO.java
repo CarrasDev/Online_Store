@@ -53,7 +53,18 @@ public class PedidoDAO implements IDao<Pedido> {
 
     @Override
     public void update(Pedido pedido) {
-        // TODO Pendiente implementar
+
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.merge(pedido);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+            System.err.println("Error al actualizar el pedido en la BBDD" + e.getMessage());
+        }
     }
 
     @Override
