@@ -69,6 +69,17 @@ public class PedidoDAO implements IDao<Pedido> {
 
     @Override
     public void delete(Pedido pedido) {
-        // TODO Pendiente implementar
+        
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.remove(pedido);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+            System.err.println("Error al eliminar el pedido de la BBDD" + e.getMessage());
+        }
     }
 }
