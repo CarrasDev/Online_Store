@@ -42,7 +42,7 @@ public class ClienteDAO implements IDao<Cliente> {
             session.persist(cliente);
             transaction.commit();
         } catch (Exception e) {
-            if (transaction != null && transaction.isActive()) {  // TODO Pendiente verificar &&
+            if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
             System.err.println("Error al guardar cliente " + e.getMessage());
@@ -59,7 +59,7 @@ public class ClienteDAO implements IDao<Cliente> {
             session.merge(cliente);   // update() ya no se usa.
             transaction.commit();
         } catch (Exception e) {
-            if (transaction != null) {
+            if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
             System.err.println("Error al actualizar cliente " + e.getMessage());
@@ -75,7 +75,7 @@ public class ClienteDAO implements IDao<Cliente> {
             session.remove(cliente); // delete() ya no se usa.
             transaction.commit();
         } catch (Exception e) {
-            if (transaction != null) {
+            if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
             System.err.println("Error al eliminar cliente " + e.getMessage());
