@@ -1,10 +1,11 @@
 package DAO;
 
 import modelo.Articulo;
-import util.ConexionBD;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.HibernateUtil;
 
-import java.sql.*;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -12,23 +13,11 @@ public class ArticuloDAO implements IDao<Articulo> {
 
     @Override
     public Optional<Articulo> getById(String codigo) {
-        try (Connection conexion = ConexionBD.getConexion()) {
-            String sql = "SELECT * FROM articulo WHERE codigoArticulo = ?";
-            PreparedStatement stmt = conexion.prepareStatement(sql);
-            stmt.setString(1, codigo);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                Articulo articulo = new Articulo(
-                        rs.getString("codigoArticulo"),
-                        rs.getString("descripcion"),
-                        rs.getFloat("precioVenta"),
-                        rs.getFloat("gastosEnvio"),
-                        rs.getInt("tiempoPreparacion")
-                );
-                return Optional.of(articulo);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Articulo articulo = session.get(Articulo.class, codigo);
+            return Optional.ofNullable(articulo);
+        } catch (Exception e) {
+            System.err.println("Error al acceder a la BBDD con email: " + mail + " " + e.getMessage());
         }
         return Optional.empty();
     }
@@ -36,73 +25,63 @@ public class ArticuloDAO implements IDao<Articulo> {
 
     @Override
     public List<Articulo> getAll() {
-        List<Articulo> lista = new ArrayList<>();
-        try (Connection conexion = ConexionBD.getConexion()) {
-            String sql = "SELECT * FROM articulo";
-            PreparedStatement stmt = conexion.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                Articulo articulo = new Articulo(
-                        rs.getString("codigoArticulo"),
-                        rs.getString("descripcion"),
-                        rs.getFloat("precioVenta"),
-                        rs.getFloat("gastosEnvio"),
-                        rs.getInt("tiempoPreparacion")
-                );
-                lista.add(articulo);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            List<Articulo> listaArticulos = session.createQuery("FROM Articulo", Articulo.class).list(); // TODO Pendiente verificar uso
+            return listaArticulos;
+        } catch (Exception e) {
+            System.err.println("Error al acceder a toda la BBDD " + e.getMessage());
         }
-        return lista;
+        return null;
     }
+
 
     @Override
-    public void save(Object o) {
+    public void save(Articulo articulo) {
 
-        if (o instanceof Articulo) {
-            Articulo articulo = (Articulo) o;
-
-            try (Connection conexion = ConexionBD.getConexion()) {
-                String sql = "INSERT INTO articulo (codigoArticulo, descripcion, precioVenta, gastosEnvio, tiempoPreparacion) VALUES (?, ?, ?, ?, ?)";
-                PreparedStatement stmt = conexion.prepareStatement(sql);
-                stmt.setString(1, articulo.getCodigoArticulo());
-                stmt.setString(2, articulo.getDescripcion());
-                stmt.setFloat(3, articulo.getPrecioVenta());
-                stmt.setFloat(4, articulo.getGastosEnvio());
-                stmt.setInt(5, articulo.getTiempoPreparacion());
-                stmt.executeUpdate();
-            } catch (SQLException e) {
-                e.printStackTrace();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.persist(articulo);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+               transaction.rollback();
             }
+            System.err.println("Error al guardar en la BBDD " + e.getMessage());
         }
     }
+
 
     @Override
     public void update(Articulo articulo) {
-        try (Connection conexion = ConexionBD.getConexion()) {
-            String sql = "UPDATE articulo SET descripcion = ?, precioVenta = ?, gastosEnvio = ?, tiempoPreparacion = ? WHERE codigoArticulo = ?";
-            PreparedStatement stmt = conexion.prepareStatement(sql);
-            stmt.setString(1, articulo.getDescripcion());
-            stmt.setFloat(2, articulo.getPrecioVenta());
-            stmt.setFloat(3, articulo.getGastosEnvio());
-            stmt.setInt(4, articulo.getTiempoPreparacion());
-            stmt.setString(5, articulo.getCodigoArticulo());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.update(articulo);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.err.println("Error al actualizar la BBDD " + e.getMessage());
         }
     }
 
+
     @Override
     public void delete(Articulo articulo) {
-        try (Connection conexion = ConexionBD.getConexion()) {
-            String sql = "DELETE FROM articulo WHERE codigoArticulo = ?";
-            PreparedStatement stmt = conexion.prepareStatement(sql);
-            stmt.setString(1, articulo.getCodigoArticulo());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.delete(articulo);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.err.println("Error al eliminar de la BBDD " + e.getMessage());
         }
     }
 }
