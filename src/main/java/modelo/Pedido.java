@@ -2,7 +2,7 @@
 
 package modelo;
 
-
+import jakarta.persistence.*;
 import modelo.cliente.Cliente;
 import modelo.cliente.ClientePremium;
 import modelo.enums.TipoEstado;
@@ -11,15 +11,40 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class  Pedido {
+@Entity
+@Table(name = "pedido")
+public class Pedido {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "numeroPedido")
     private Integer numeroPedido;
+
+    @ManyToOne
+    @JoinColumn(name = "codigoArticulo", nullable = false)
     private Articulo articulo;
+
+    @Column(name = "cantidadArticulos", nullable = false)
     private Integer cantidadArticulos;
+
+    @ManyToOne
+    @JoinColumn(name = "emailCliente", nullable = false)
     private Cliente cliente;
-    private double precioTotal;
+
+    @Column(name = "precioTotal", nullable = false)
+    private Double precioTotal;
+
+    @Column(name = "fechaPedido", nullable = false)
     private LocalDateTime fechaPedido;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado", nullable = false)
     private TipoEstado estado;
+
+    // Constructor vacío obligatorio para Hibernate
+    public Pedido() {
+    }
 
     public Pedido(Integer numeroPedido, Articulo articulo, Integer cantidadArticulos,
                   Cliente cliente, LocalDateTime fechaPedido, TipoEstado estadoPedido) {
