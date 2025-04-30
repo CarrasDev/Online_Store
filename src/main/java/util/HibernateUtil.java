@@ -11,7 +11,7 @@ public class HibernateUtil {
         try {
             return new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         } catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
+            System.err.println("Ha fallado la creación de la conexión a la BBDD." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
