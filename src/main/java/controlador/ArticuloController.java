@@ -1,6 +1,8 @@
 package controlador;
 
 import modelo.Articulo;
+import modelo.ArticuloModel;
+import vista.Vista;
 
 import java.util.List;
 
@@ -10,22 +12,28 @@ public class ArticuloController {
 
     // TODO Desarrollo ArticuloController
 
-    // TODO variables --> Modelo y Vista correspondiente
+    // TODO variables --> Modificar uso de Vista según proceda
+    private final ArticuloModel articuloModel;
+    private final Vista vistaTienda;
 
-    // TODO Constructor
+    // Constructor
+    public ArticuloController(ArticuloModel articuloModel, Vista vistaTienda) {
+        this.articuloModel = articuloModel;
+        this.vistaTienda = vistaTienda;
+    }
 
     public void addArticulo(String codigoArticulo, String descripcion, Float precioVenta, Float gastosEnvio, Integer tiempoPreparacion) {
         Articulo articulo = new Articulo(codigoArticulo, descripcion, precioVenta, gastosEnvio, tiempoPreparacion);
-        modeloTienda.addArticulo(articulo);
+        articuloModel.addArticulo(articulo);
     }
     //LEE MODELO:Busca un articulo en el modelo y devuelve TRUE si lo encuentra
     public boolean existeArticulo(String codigoArticulo) {
-        return (modeloTienda.existeArticulo(codigoArticulo));
+        return (articuloModel.existeArticulo(codigoArticulo));
     }
 
     //LEE MODELO:Obtiene y retorna un listado de todos los articulos del modelo
     private <E> List<E> getListaArticulos() {
-        return ((List<E>) modeloTienda.getArticulos());
+        return ((List<E>) articuloModel.getArticulos());
     }
 
     //ACTUALIZA VISTA: Elabora listado de artículos y actualiza vista para mostrarlos
