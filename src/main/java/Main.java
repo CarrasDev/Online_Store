@@ -1,24 +1,36 @@
 
-import modelo.Modelo;
+import controlador.ArticuloController;
+import controlador.ClienteController;
+import controlador.PedidoController;
+import modelo.ArticuloModel;
+import modelo.ClienteModel;
+import modelo.PedidoModel;
 import util.HibernateUtil;
 import vista.Vista;
-import controlador.Controlador;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     public static void main(String[] args) {
 
-        // TODO Revisar secuencia de arranque de MVC
-        Modelo modelo = new Modelo();
-        Vista vista = new Vista();
-        Controlador controlador = new Controlador(modelo, vista);
+        // Declaración de modelos
+        ArticuloModel articuloModel = new ArticuloModel();
+        ClienteModel clienteModel = new ClienteModel();
+        PedidoModel pedidoModel = new PedidoModel();
 
+        // Declaración de vistas
+        Vista vista = new Vista();
+
+        // Relación MVC
+        ArticuloController articuloController = new ArticuloController(articuloModel, vista);
+        ClienteController clienteController = new ClienteController(clienteModel, vista);
+        PedidoController pedidoController = new PedidoController(pedidoModel,articuloModel, clienteModel, vista);
 
         // Inicia la conexión a la BBDD
         HibernateUtil.getSessionFactory().openSession();
+        // La sesión se está cerrando en el menú principal de la vista, case 0.
+        // TODO Con cambio a JavaFX hay que controlar donde cerramos la BBDD
 
-        // TODO --> Es clave para el arranque del programa
-        vista.startVista(controlador);
+        // TODO provisional para 1 vista
+        vista.startVista(articuloController, clienteController, pedidoController);
     }
 }

@@ -1,6 +1,9 @@
 package vista;
 
+import controlador.ArticuloController;
+import controlador.ClienteController;
 import controlador.Controlador;
+import controlador.PedidoController;
 import util.HibernateUtil;
 
 import java.util.Scanner;
@@ -8,6 +11,9 @@ import java.util.Scanner;
 public class Vista {
     Scanner scanner;
     Controlador controlador;
+    ArticuloController articuloController;
+    ClienteController clienteController;
+    PedidoController pedidoController;
 
     // Constructor
     public Vista() {
@@ -15,8 +21,12 @@ public class Vista {
     }
 
     // Actualiza el controlador y comienza el menú principal
-    public void startVista(Controlador controlador) {
-        this.controlador = controlador;
+    public void startVista(ArticuloController articuloController,
+                           ClienteController clienteController,
+                           PedidoController pedidoController) {
+        this.articuloController = articuloController;
+        this.clienteController = clienteController;
+        this.pedidoController = pedidoController;
         menuPrincipal();
     }
 
