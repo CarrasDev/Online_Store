@@ -4,6 +4,8 @@ import modelo.Articulo;
 
 import java.util.List;
 
+/// Controlador para la Gestión de Artículos
+
 public class ArticuloController {
 
     // TODO Desarrollo ArticuloController
@@ -20,7 +22,7 @@ public class ArticuloController {
     public boolean existeArticulo(String codigoArticulo) {
         return (modeloTienda.existeArticulo(codigoArticulo));
     }
-    
+
     //LEE MODELO:Obtiene y retorna un listado de todos los articulos del modelo
     private <E> List<E> getListaArticulos() {
         return ((List<E>) modeloTienda.getArticulos());
