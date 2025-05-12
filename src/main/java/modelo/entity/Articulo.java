@@ -1,4 +1,4 @@
-package modelo;
+package modelo.entity;
 
 // Grupo 2 - SQL SQUAD
 

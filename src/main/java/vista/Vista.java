@@ -1,13 +1,18 @@
 package vista;
 
-import controlador.Controlador;
+import controlador.ArticuloController;
+import controlador.ClienteController;
+import controlador.PedidoController;
 import util.HibernateUtil;
 
 import java.util.Scanner;
 
 public class Vista {
     Scanner scanner;
-    Controlador controlador;
+
+    ArticuloController articuloController;
+    ClienteController clienteController;
+    PedidoController pedidoController;
 
     // Constructor
     public Vista() {
@@ -15,8 +20,12 @@ public class Vista {
     }
 
     // Actualiza el controlador y comienza el menú principal
-    public void startVista(Controlador controlador) {
-        this.controlador = controlador;
+    public void startVista(ArticuloController articuloController,
+                           ClienteController clienteController,
+                           PedidoController pedidoController) {
+        this.articuloController = articuloController;
+        this.clienteController = clienteController;
+        this.pedidoController = pedidoController;
         menuPrincipal();
     }
 
@@ -74,14 +83,14 @@ public class Vista {
     // E es el tipo genérico de la lista, los objetos de la lista deben tener metodo toString().
     // Pide al controlador actualizar la vista con la lista de artículos
     private void mostrarArticulos() {
-        controlador.mostrarArticulos();
+        articuloController.mostrarArticulos();
     }
 
     // Inicia el proceso de alta de nuevo artículo
     private void anyadirArticulo() {
         // Se lee y valida que el código del artículo no esté vacío
         String codigoArticulo = leerCadena("Introduzca el código del articulo: ");
-        controlador.nuevoCodigoArticulo(codigoArticulo);
+        articuloController.nuevoCodigoArticulo(codigoArticulo);
     }
 
     // Pide el resto de datos al usuario
@@ -123,7 +132,7 @@ public class Vista {
                 System.out.println("Error: el tiempo de preparación no puede ser negativo.");
             }
         }
-        controlador.addArticulo(codigoArticulo, descripcion, precioVenta, gastosEnvio, tiempoPreparacion);
+        articuloController.addArticulo(codigoArticulo, descripcion, precioVenta, gastosEnvio, tiempoPreparacion);
     }
 
     // GESTIÓN DE CLIENTES
@@ -154,7 +163,7 @@ public class Vista {
             System.out.println("Error: el formato del email es inválido. por ejemplo : usuario@abx.com");
             emailCliente = leerCadena("Introduzca el e-mail del cliente: ");
         }
-        controlador.esClienteNuevo(emailCliente);
+        clienteController.esClienteNuevo(emailCliente);
     }
 
     public void pedirDatosCliente(String emailCliente) {
@@ -179,7 +188,7 @@ public class Vista {
             }
         }
 
-        controlador.addCliente(nombre, domicilio, nif, emailCliente, tipoCliente);
+        clienteController.addCliente(nombre, domicilio, nif, emailCliente, tipoCliente);
     }
 
     private void menuMostrarClientes() {
@@ -194,9 +203,9 @@ public class Vista {
             opcion = leerEntero("Seleccione una opción: ");
             // Conversión del switch tradicional a switch con reglas
             switch (opcion) {
-                case 1 -> controlador.mostrarClientes();
-                case 2 -> controlador.mostrarClientesEstandar();
-                case 3 -> controlador.mostrarClientesPremium();
+                case 1 -> clienteController.mostrarClientes();
+                case 2 -> clienteController.mostrarClientesEstandar();
+                case 3 -> clienteController.mostrarClientesPremium();
                 case 0 -> {}
                 default -> System.out.println("Opción no válida. Intente de nuevo.");
             }
@@ -251,8 +260,8 @@ public class Vista {
             System.out.println("Error: el formato del email es inválido. por ejemplo usuario@abx.com");
             emailCliente = leerCadena("Introduzca el e-mail del cliente: ");
         }
-        controlador.esClienteNuevo(emailCliente);
-        controlador.addPedido(codigoArticulo, cantidad, emailCliente);
+        clienteController.esClienteNuevo(emailCliente);
+        pedidoController.addPedido(codigoArticulo, cantidad, emailCliente);
     }
 
     private void eliminarPedido() {
@@ -262,7 +271,7 @@ public class Vista {
             System.out.println("Error: el número del pedido debe ser mayor que 0.");
             return;
         }
-        controlador.removePedido(numeroPedido);
+        pedidoController.removePedido(numeroPedido);
     }
 
     private void mostrarPedidosPendientes() {
@@ -273,7 +282,7 @@ public class Vista {
             System.out.println("Error: la entrada no es válida. Ha de ser 'T' o un correo electrónico válido. Se mostrarán todos los pedidos pendientes.");
             opcion = "T";
         }
-        controlador.mostrarPedidosPendientes(opcion);
+        pedidoController.mostrarPedidosPendientes(opcion);
     }
     private void mostrarPedidosEnviados() {
         String opcion;
@@ -290,7 +299,7 @@ public class Vista {
                             "o un correo electrónico válido. Inténtalo de nuevo."
             );
         } while (true);
-        controlador.mostrarPedidosEnviados(opcion);
+        pedidoController.mostrarPedidosEnviados(opcion);
     }
 
     // MÉTODOS AUXILIARES DE VALIDACIÓN
@@ -332,27 +341,6 @@ public class Vista {
                 return numero;
             } else {
                 System.out.println("Error: Se ha ingresar un número decimal.");
-                scanner.nextLine(); // Consumir entrada inválida
-            }
-        }
-    }
-
-    /**
-     * Lee y valida la entrada de un número largo.
-     * Se repite la solicitud hasta que se ingresa un número largo válido.
-     * @param mensaje Mensaje a mostrar para solicitar la entrada.
-     * @return El número largo leído.
-     */
-    private long leerLong(String mensaje) {
-        long numero;
-        while (true) {
-            System.out.print(mensaje);
-            if (scanner.hasNextLong()) {
-                numero = scanner.nextLong();
-                scanner.nextLine(); // Limpiar buffer
-                return numero;
-            } else {
-                System.out.println("Error: Se ha ingresar un número entero largo.");
                 scanner.nextLine(); // Consumir entrada inválida
             }
         }
