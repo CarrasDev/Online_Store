@@ -109,7 +109,7 @@ public class Controlador {
 
     //ACTUALIZA VISTA:Registra un nuevo cliente o muestra que ya se encuentra registrado
     public void esClienteNuevo(String emailCliente){
-        if (!esClienteRegistrado(emailCliente)){
+        if (!esClienteRegistrado(emailCliente)){                // TODO Controlar su uso
             vistaTienda.pedirDatosCliente(emailCliente);
         } else{
             vistaTienda.updateView("Este cliente se encuentra registrado");
@@ -210,7 +210,7 @@ public class Controlador {
         if (Objects.equals(iDcliente, "T")){
             mostrarTodosLosPedidosPendientes();
         } else {
-            if (!esClienteRegistrado(iDcliente)) {
+            if (!esClienteRegistrado(iDcliente)) {  // TODO Verificando
                 vistaTienda.updateView("El cliente con email '" + iDcliente + "' no está registrado.\n");
                 return;
             }
@@ -250,7 +250,7 @@ public class Controlador {
         if (Objects.equals(emailCliente, "T")){
             mostrarTodosLosPedidosEnviados();
         } else {
-            if (!esClienteRegistrado(emailCliente)) {
+            if (!esClienteRegistrado(emailCliente)) {       // TODO Verificando
                 vistaTienda.updateView("El cliente con email '" + emailCliente + "' no está registrado.\n");
                 return;
             }

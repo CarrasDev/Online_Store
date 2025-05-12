@@ -1,10 +1,10 @@
 package controlador;
 
 
-import modelo.Articulo;
-import modelo.Pedido;
+import modelo.*;
 import modelo.cliente.Cliente;
 import modelo.enums.TipoEstado;
+import vista.Vista;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,9 +16,21 @@ public class PedidoController {
 
     // TODO Desarrollo PedidoController
 
-    // TODO variables --> Modelo y Vista correspondiente
+    // TODO variables --> Modificar uso de Vista según proceda
+    private final PedidoModel pedidoModel;
+    private final ArticuloModel articuloModel;
+    private final ClienteModel clienteModel;
+    private final Vista vistaTienda;
 
-    // TODO Constructor
+    // Constructor
+    public PedidoController(PedidoModel pedidoModel, ArticuloModel articuloModel,
+                            ClienteModel clienteModel, Vista vistaTienda) {
+
+        this.pedidoModel = pedidoModel;
+        this.articuloModel = articuloModel;
+        this.clienteModel = clienteModel;
+        this.vistaTienda = vistaTienda;
+    }
 
     //ACTUALIZA MODELO: Permite añadir un pedido al modelo.
     public void addPedido(String codigoArticulo, Integer cantidadArticulos, String emailCliente) {
@@ -30,12 +42,12 @@ public class PedidoController {
             vistaTienda.updateView("Error: Email del cliente inválido");
             return;
         }
-        Articulo articulo = modeloTienda.getArticulo(codigoArticulo);
+        Articulo articulo = articuloModel.getArticulo(codigoArticulo);
         if (articulo == null) {
             vistaTienda.updateView("Error: El artículo no existe");
             return;
         }
-        Cliente cliente = modeloTienda.getCliente(emailCliente);
+        Cliente cliente = clienteModel.getCliente(emailCliente);
         if (cliente == null) {
             vistaTienda.updateView("Error: El cliente no existe");
             return;
@@ -46,15 +58,16 @@ public class PedidoController {
         }
         // Integer numeroPedido = modeloTienda.generarProximoPedido();
         Pedido pedido = new Pedido(articulo, cantidadArticulos, cliente, LocalDateTime.now(), TipoEstado.PENDIENTE);
-        modeloTienda.addPedido(pedido);
+        pedidoModel.addPedido(pedido);
         vistaTienda.updateView("Pedido añadido");
     }
+
     //ACTUALIZA MODELO:Permite eliminar un pedido del modelo.
     //Un pedido puede ser borrado únicamente si no ha sido enviado, es decir, si el tiempo transcurrido a desde
     // la fecha y hora del pedido no supera el tiempo de preparación para el envío del artículo.
     public void removePedido(Integer numeroPedido) {
         if(esBorrable(numeroPedido)){
-            modeloTienda.eliminarPedido(numeroPedido);
+            pedidoModel.eliminarPedido(numeroPedido);
             vistaTienda.updateView("Pedido eliminado \n");
         } else {
             vistaTienda.updateView("No es posible borrar el pedido \n");
@@ -66,7 +79,7 @@ public class PedidoController {
 
     //Recupera pedido del modelo
     private <T> T getPedido(Integer numeroPedido) {
-        return ((T) modeloTienda.getPedido(numeroPedido));
+        return ((T) pedidoModel.getPedido(numeroPedido));
     }
 
     // Eliminar Pedido. Un pedido puede ser borrado únicamente si no ha sido enviado, es decir,
@@ -78,25 +91,25 @@ public class PedidoController {
     }
 
     private <E> List<E> getListaPedidos(){
-        return (List<E>)modeloTienda.getPedidos();
+        return (List<E>)pedidoModel.getPedidos();
     }
 
     //Llama al metodo correcto en base al emailCliente
-    public void mostrarPedidosPendientes(String iDcliente) {
-        if (Objects.equals(iDcliente, "T")){
+    public void mostrarPedidosPendientes(String emailCliente) {
+        if ("T".equalsIgnoreCase(emailCliente)){  // TODO Refactorizado de: if (Objects.equals(emailCliente, "T"))
             mostrarTodosLosPedidosPendientes();
         } else {
-            if (!esClienteRegistrado(iDcliente)) {
-                vistaTienda.updateView("El cliente con email '" + iDcliente + "' no está registrado.\n");
+            if (!clienteModel.existeCliente(emailCliente)) { // TODO Verificar funcionamiento
+                vistaTienda.updateView("El cliente con email '" + emailCliente + "' no está registrado.\n");
                 return;
             }
-            mostrarPedidoPendientesPorCliente(iDcliente);
+            mostrarPedidoPendientesPorCliente(emailCliente);
         }
     }
 
     //ACTUALIZA VISTA: con listado de pedidos pendientes filtrando por cliente
     private void mostrarPedidoPendientesPorCliente(String emailCliente) {
-        modeloTienda.actualizarPedidos();
+        pedidoModel.actualizarPedidos();
         List<Pedido> listaPedidos = getListaPedidos();
         StringBuilder sb = new StringBuilder();
         for (Pedido pedido : listaPedidos) {
@@ -109,7 +122,7 @@ public class PedidoController {
 
     //ACTUALIZA VISTA: con listado de todos los pedidos pendientes
     private void mostrarTodosLosPedidosPendientes() {
-        modeloTienda.actualizarPedidos();
+        pedidoModel.actualizarPedidos();
         List<Pedido> listaPedidos = getListaPedidos();
         StringBuilder sb = new StringBuilder();
         for (Pedido pedido : listaPedidos) {
@@ -122,11 +135,11 @@ public class PedidoController {
 
     //Llama al metodo correcto en base al emailCliente
     public void mostrarPedidosEnviados(String emailCliente) {
-        modeloTienda.actualizarPedidos();
-        if (Objects.equals(emailCliente, "T")){
+        pedidoModel.actualizarPedidos();
+        if ("T".equalsIgnoreCase(emailCliente)){     // TODO Refactorizado de: if (Objects.equals(emailCliente, "T"))
             mostrarTodosLosPedidosEnviados();
         } else {
-            if (!esClienteRegistrado(emailCliente)) {
+            if (!clienteModel.existeCliente(emailCliente)) {  // TODO Verificar que funciona
                 vistaTienda.updateView("El cliente con email '" + emailCliente + "' no está registrado.\n");
                 return;
             }
@@ -136,7 +149,7 @@ public class PedidoController {
 
     //ACTUALIZA VISTA:Crea listado de los pedidos enviados filtrados por cliente actualizando la vista
     private void mostrarPedidoEnviadosPorCliente(String emailCliente) {
-        modeloTienda.actualizarPedidos();
+        pedidoModel.actualizarPedidos();
         List<Pedido> listaPedidos = getListaPedidos();
         StringBuilder sb = new StringBuilder();
         for (Pedido pedido : listaPedidos) {
@@ -149,7 +162,7 @@ public class PedidoController {
 
     ////ACTUALIZA VISTA: Crea listado de todos los pedidos enviados actualizando la vista
     private void mostrarTodosLosPedidosEnviados() {
-        modeloTienda.actualizarPedidos();
+        pedidoModel.actualizarPedidos();
         List<Pedido> listaPedidos = getListaPedidos();
         StringBuilder sb = new StringBuilder();
         for (Pedido pedido : listaPedidos) {

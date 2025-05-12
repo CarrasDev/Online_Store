@@ -75,7 +75,7 @@ public class ClienteController {
 
     //ACTUALIZA VISTA:Registra un nuevo cliente o muestra que ya se encuentra registrado
     public void esClienteNuevo(String emailCliente){
-        if (!esClienteRegistrado(emailCliente)){
+        if (!clienteModel.existeCliente(emailCliente)){            // TODO Controlar su uso
             vistaTienda.pedirDatosCliente(emailCliente);
         } else{
             vistaTienda.updateView("Este cliente se encuentra registrado");
