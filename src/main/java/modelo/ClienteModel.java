@@ -43,4 +43,6 @@ public class ClienteModel {
         return clienteDAO.getById(email).isPresent();
     }
 
+    // TODO ¿Necesario un toString()?
+
 }
