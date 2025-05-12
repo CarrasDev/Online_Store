@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class ClienteController {
 
-    // TODO Desarrollo ArticuloController
+    // TODO Desarrollo ClienteController
 
     // TODO variables --> Modelo y Vista correspondiente
 
