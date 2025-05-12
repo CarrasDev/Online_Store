@@ -2,6 +2,7 @@ package modelo;
 
 import DAO.FactoryDAO;
 import DAO.IDao;
+import modelo.cliente.Cliente;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,14 +34,10 @@ public class ArticuloModel {
         }
     }
 
+    // TODO Refactorizada, verificar que funcione
     public boolean existeArticulo(String codigoArticulo) {
         IDao<Articulo> articuloDAO = FactoryDAO.getIDAO("ARTICULO");
-        Optional<Articulo> articulo = articuloDAO.getById(codigoArticulo);
-        if (articulo.isPresent()) {
-            return true;
-        } else {
-            return false;
-        }
+        return articuloDAO.getById(codigoArticulo).isPresent();
     }
 
     // TODO ¿Necesario un toString()?
