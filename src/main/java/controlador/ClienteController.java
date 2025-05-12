@@ -1,7 +1,9 @@
 package controlador;
 
+import modelo.ClienteModel;
 import modelo.cliente.ClienteEstandar;
 import modelo.cliente.ClientePremium;
+import vista.Vista;
 
 import java.util.HashMap;
 
@@ -11,45 +13,53 @@ public class ClienteController {
 
     // TODO Desarrollo ClienteController
 
-    // TODO variables --> Modelo y Vista correspondiente
+    // TODO variables --> Modificar uso de Vista según proceda
+    private final ClienteModel clienteModel;
+    private final Vista vistaTienda;
 
-    // TODO Constructor
-
-    ///////////////////////Gestión de Clientes//////////////////////////
-    /// Permite añadir un cliente al modelo y actualiza la vista para
-    /// Indicar que se ha creado.
+    // Constructor
+    public ClienteController(ClienteModel clienteModel, Vista vistaTienda) {
+        this.clienteModel = clienteModel;
+        this.vistaTienda = vistaTienda;
+    }
 
     public void addCliente(String nombre, String domicilio, String nif, String email, Integer tipoCliente) {
         if (tipoCliente==1){
             ClientePremium cliente = new ClientePremium(nombre, domicilio, nif, email);
-            modeloTienda.addCliente(cliente);
+            clienteModel.addCliente(cliente);
             vistaTienda.updateView("Se ha creado un cliente Premium ");
         } else{
             ClienteEstandar cliente = new ClienteEstandar(nombre, domicilio, nif, email);
-            modeloTienda.addCliente(cliente);
+            clienteModel.addCliente(cliente);
             vistaTienda.updateView("Se ha creado un cliente Estandar ");
         }
     }
+
     //LEE MODELO:Recupera cliente del modelo
     //private <T> T getCliente(String email) {
     //    return ((T) modeloTienda.getCliente(email));
     //}
     //LEE MODELO:Recupera el listado de clientes del modelo
     private <K,V> HashMap<K,V> getListaClientes() {
-        return ((HashMap<K,V>) modeloTienda.getListaClientes());
+        return ((HashMap<K,V>) clienteModel.getListaClientes());
     }
+
+    // TODO Pendiente resolver su uso en Pedido
     //LEE MODELO:Comprueba si existe el cliente, devuelve true si está registrado.
     public boolean esClienteRegistrado(String emailCliente) {
-        return modeloTienda.getCliente(emailCliente) != null;
+        return clienteModel.getCliente(emailCliente) != null;
     }
+
     //Comprueba que se trata de un objeto cliente premium
     private <E> boolean esPremium(E cliente){
         return cliente.getClass()== ClientePremium.class;
     }
+
     //Comprueba que se trata de un objeto cliente estandar
     private <E> boolean esEstandar(E cliente){
         return cliente.getClass()== ClienteEstandar.class;
     }
+
     ////ACTUALIZA VISTA:Envia el listado de clientes a la vista en formato String para
     //que se muestre al usuario mediante updateView
     public <K,V> void mostrarClientes() {
