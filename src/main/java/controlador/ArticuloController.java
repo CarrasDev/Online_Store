@@ -10,8 +10,6 @@ import java.util.List;
 
 public class ArticuloController {
 
-    // TODO Desarrollo ArticuloController
-
     // TODO variables --> Modificar uso de Vista según proceda
     private final ArticuloModel articuloModel;
     private final Vista vistaTienda;

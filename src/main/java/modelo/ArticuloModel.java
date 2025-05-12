@@ -9,7 +9,6 @@ import java.util.Collection;
 
 public class ArticuloModel {
 
-    // TODO Desarrollo ArticuloModel
 
     //Añaden a listados
     public void addArticulo(Articulo articulo) {
@@ -33,12 +32,8 @@ public class ArticuloModel {
         }
     }
 
-    // TODO Refactorizada, verificar que funcione
     public boolean existeArticulo(String codigoArticulo) {
         IDao<Articulo> articuloDAO = FactoryDAO.getIDAO("ARTICULO");
         return articuloDAO.getById(codigoArticulo).isPresent();
     }
-
-    // TODO ¿Necesario un toString()?
-
 }

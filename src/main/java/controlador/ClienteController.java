@@ -11,8 +11,6 @@ import java.util.HashMap;
 
 public class ClienteController {
 
-    // TODO Desarrollo ClienteController
-
     // TODO variables --> Modificar uso de Vista según proceda
     private final ClienteModel clienteModel;
     private final Vista vistaTienda;
@@ -44,12 +42,6 @@ public class ClienteController {
         return ((HashMap<K,V>) clienteModel.getListaClientes());
     }
 
-    // TODO Pendiente resolver su uso en Pedido
-    //LEE MODELO:Comprueba si existe el cliente, devuelve true si está registrado.
-    public boolean esClienteRegistrado(String emailCliente) {
-        return clienteModel.getCliente(emailCliente) != null;
-    }
-
     //Comprueba que se trata de un objeto cliente premium
     private <E> boolean esPremium(E cliente){
         return cliente.getClass()== ClientePremium.class;
@@ -75,7 +67,7 @@ public class ClienteController {
 
     //ACTUALIZA VISTA:Registra un nuevo cliente o muestra que ya se encuentra registrado
     public void esClienteNuevo(String emailCliente){
-        if (!clienteModel.existeCliente(emailCliente)){            // TODO Controlar su uso
+        if (!clienteModel.existeCliente(emailCliente)){
             vistaTienda.pedirDatosCliente(emailCliente);
         } else{
             vistaTienda.updateView("Este cliente se encuentra registrado");

@@ -11,8 +11,6 @@ import java.util.Optional;
 
 public class PedidoModel {
 
-    // TODO Desarrollo PedidoModel
-
     public void addPedido(Pedido pedido) {
         IDao<Pedido> pedidoDAO = FactoryDAO.getIDAO("PEDIDO");
         pedidoDAO.save(pedido);
@@ -74,7 +72,4 @@ public class PedidoModel {
         }
         return false;
     }
-
-    // TODO ¿Necesario un toString()?
-
 }

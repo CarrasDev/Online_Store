@@ -9,8 +9,6 @@ import java.util.HashMap;
 
 public class ClienteModel {
 
-    // TODO Desarrollo ClienteModel
-
     public void addCliente(Cliente cliente) {
         IDao<Cliente> clienteDAO = FactoryDAO.getIDAO("CLIENTE");
         clienteDAO.save(cliente);
@@ -42,7 +40,4 @@ public class ClienteModel {
         IDao<Cliente> clienteDAO = FactoryDAO.getIDAO("CLIENTE");
         return clienteDAO.getById(email).isPresent();
     }
-
-    // TODO ¿Necesario un toString()?
-
 }

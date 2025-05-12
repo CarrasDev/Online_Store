@@ -16,8 +16,6 @@ import java.util.Objects;
 
 public class PedidoController {
 
-    // TODO Desarrollo PedidoController
-
     // TODO variables --> Modificar uso de Vista según proceda
     private final PedidoModel pedidoModel;
     private final ArticuloModel articuloModel;
@@ -98,10 +96,10 @@ public class PedidoController {
 
     //Llama al metodo correcto en base al emailCliente
     public void mostrarPedidosPendientes(String emailCliente) {
-        if ("T".equalsIgnoreCase(emailCliente)){  // TODO Refactorizado de: if (Objects.equals(emailCliente, "T"))
+        if ("T".equalsIgnoreCase(emailCliente)){
             mostrarTodosLosPedidosPendientes();
         } else {
-            if (!clienteModel.existeCliente(emailCliente)) { // TODO Verificar funcionamiento
+            if (!clienteModel.existeCliente(emailCliente)) {
                 vistaTienda.updateView("El cliente con email '" + emailCliente + "' no está registrado.\n");
                 return;
             }
@@ -138,10 +136,10 @@ public class PedidoController {
     //Llama al metodo correcto en base al emailCliente
     public void mostrarPedidosEnviados(String emailCliente) {
         pedidoModel.actualizarPedidos();
-        if ("T".equalsIgnoreCase(emailCliente)){     // TODO Refactorizado de: if (Objects.equals(emailCliente, "T"))
+        if ("T".equalsIgnoreCase(emailCliente)){
             mostrarTodosLosPedidosEnviados();
         } else {
-            if (!clienteModel.existeCliente(emailCliente)) {  // TODO Verificar que funciona
+            if (!clienteModel.existeCliente(emailCliente)) {
                 vistaTienda.updateView("El cliente con email '" + emailCliente + "' no está registrado.\n");
                 return;
             }
