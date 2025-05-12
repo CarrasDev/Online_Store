@@ -1,8 +1,8 @@
 package controlador;
 
 import modelo.ClienteModel;
-import modelo.cliente.ClienteEstandar;
-import modelo.cliente.ClientePremium;
+import modelo.entity.cliente.ClienteEstandar;
+import modelo.entity.cliente.ClientePremium;
 import vista.Vista;
 
 import java.util.HashMap;

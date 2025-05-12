@@ -1,6 +1,6 @@
 package controlador;
 
-import modelo.Articulo;
+import modelo.entity.Articulo;
 import modelo.ArticuloModel;
 import vista.Vista;
 

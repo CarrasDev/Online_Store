@@ -2,6 +2,7 @@ package modelo;
 
 import DAO.FactoryDAO;
 import DAO.IDao;
+import modelo.entity.Pedido;
 import modelo.enums.TipoEstado;
 
 import java.util.ArrayList;

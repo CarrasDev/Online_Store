@@ -1,6 +1,6 @@
 package DAO;
 
-import modelo.Pedido;
+import modelo.entity.Pedido;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;

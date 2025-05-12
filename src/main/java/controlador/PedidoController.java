@@ -2,7 +2,9 @@ package controlador;
 
 
 import modelo.*;
-import modelo.cliente.Cliente;
+import modelo.entity.Articulo;
+import modelo.entity.Pedido;
+import modelo.entity.cliente.Cliente;
 import modelo.enums.TipoEstado;
 import vista.Vista;
 

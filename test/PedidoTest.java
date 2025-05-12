@@ -1,10 +1,10 @@
 package test;
 
-import modelo.Articulo;
-import modelo.cliente.Cliente;
-import modelo.cliente.ClienteEstandar;
-import modelo.cliente.ClientePremium;
-import modelo.Pedido;
+import modelo.entity.Articulo;
+import modelo.entity.cliente.Cliente;
+import modelo.entity.cliente.ClienteEstandar;
+import modelo.entity.cliente.ClientePremium;
+import modelo.entity.Pedido;
 import modelo.enums.TipoEstado;
 import org.junit.jupiter.api.Test;
 

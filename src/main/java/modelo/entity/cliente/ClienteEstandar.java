@@ -1,7 +1,7 @@
 // Grupo 2 - SQL SQUAD
 
 
-package modelo.cliente;
+package modelo.entity.cliente;
 
 import jakarta.persistence.*;
 import modelo.enums.TipoCliente;

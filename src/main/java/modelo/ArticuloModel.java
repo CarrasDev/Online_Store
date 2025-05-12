@@ -2,11 +2,10 @@ package modelo;
 
 import DAO.FactoryDAO;
 import DAO.IDao;
-import modelo.cliente.Cliente;
+import modelo.entity.Articulo;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Optional;
 
 public class ArticuloModel {
 
