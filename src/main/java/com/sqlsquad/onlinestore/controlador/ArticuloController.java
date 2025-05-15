@@ -19,10 +19,17 @@ public class ArticuloController {
         this.articuloModel = articuloModel;
     }
 
+    public void addArticulo(Articulo articulo) {
+        articuloModel.addArticulo(articulo);
+    }
+
+    /*
     public void addArticulo(String codigoArticulo, String descripcion, Float precioVenta, Float gastosEnvio, Integer tiempoPreparacion) {
         Articulo articulo = new Articulo(codigoArticulo, descripcion, precioVenta, gastosEnvio, tiempoPreparacion);
         articuloModel.addArticulo(articulo);
     }
+    */
+
     //LEE MODELO:Busca un articulo en el modelo y devuelve TRUE si lo encuentra
     public boolean existeArticulo(String codigoArticulo) {
         return (articuloModel.existeArticulo(codigoArticulo));

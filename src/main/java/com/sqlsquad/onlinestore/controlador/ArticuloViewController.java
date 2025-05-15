@@ -56,10 +56,16 @@ public class ArticuloViewController {
 
         // Si no existe error proseguimos
         if (!error) {
+            // TODO Eliminar Traza Terminal
             System.out.println(articuloObj.toString());
 
-            // TODO Verificar si existe el artículo
-            // TODO si no existe crearlo en la BBDD
+            // Si no existe articulo lo guarda
+            if (!articuloController.existeArticulo(articuloObj.getCodigoArticulo())) {
+                articuloController.addArticulo(articuloObj);
+            } else {
+                // TODO cambiar metodo
+                System.out.println("Articulo ya existe");
+            }
         }
     }
 }
