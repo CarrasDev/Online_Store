@@ -21,11 +21,11 @@
     <property name="hibernate.connection.autocommit">false</property>
 
     <!-- Mapeo de Entidades -->
-    <mapping class="modelo.entity.Articulo" />
-    <mapping class="modelo.entity.cliente.Cliente" />
-    <mapping class="modelo.entity.cliente.ClienteEstandar" />
-    <mapping class="modelo.entity.cliente.ClientePremium" />
-    <mapping class="modelo.entity.Pedido" />
+    <mapping class="com.sqlsquad.onlinestore.modelo.entity.Articulo" />
+    <mapping class="com.sqlsquad.onlinestore.modelo.entity.cliente.Cliente" />
+    <mapping class="com.sqlsquad.onlinestore.modelo.entity.cliente.ClienteEstandar" />
+    <mapping class="com.sqlsquad.onlinestore.modelo.entity.cliente.ClientePremium" />
+    <mapping class="com.sqlsquad.onlinestore.modelo.entity.Pedido" />
 
   </session-factory>
 </hibernate-configuration>
