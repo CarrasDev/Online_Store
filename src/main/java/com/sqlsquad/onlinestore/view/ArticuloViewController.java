@@ -1,5 +1,6 @@
-package com.sqlsquad.onlinestore.controlador;
+package com.sqlsquad.onlinestore.view;
 
+import com.sqlsquad.onlinestore.controlador.ArticuloController;
 import com.sqlsquad.onlinestore.modelo.entity.Articulo;
 import com.sqlsquad.onlinestore.util.AppService;
 import javafx.fxml.FXML;
@@ -56,9 +57,6 @@ public class ArticuloViewController {
 
         // Si no existe error proseguimos
         if (!error) {
-            // TODO Eliminar Traza Terminal
-            System.out.println(articuloObj.toString());
-
             // Si no existe articulo lo guarda
             if (!articuloController.existeArticulo(articuloObj.getCodigoArticulo())) {
                 articuloController.addArticulo(articuloObj);

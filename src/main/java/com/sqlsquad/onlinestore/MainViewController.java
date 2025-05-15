@@ -28,6 +28,11 @@ public class MainViewController {
         loadView("articulos.fxml");
     }
 
+    @FXML
+    private void handleLookArticulos(ActionEvent event) {
+        loadView("look-articulos.fxml");
+    }
+
     // Maneja el clic en el botón "Clientes"
     @FXML
     private void handleClientes(ActionEvent event) {

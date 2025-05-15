@@ -1,24 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
+<!--
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.sqlsquad.onlinestore.MainViewController">
+          Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+          All rights reserved. Use is subject to license terms.
+
+          This file is available and licensed under the following license:
+
+          Redistribution and use in source and binary forms, with or without
+          modification, are permitted provided that the following conditions
+          are met:
+
+          - Redistributions of source code must retain the above copyright
+            notice, this list of conditions and the following disclaimer.
+          - Redistributions in binary form must reproduce the above copyright
+            notice, this list of conditions and the following disclaimer in
+            the documentation and/or other materials provided with the distribution.
+          - Neither the name of Oracle Corporation nor the names of its
+            contributors may be used to endorse or promote products derived
+            from this software without specific prior written permission.
+
+          THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+          "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+          LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+          A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+          OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+          SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+          LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+          DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+          THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+          (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+          OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+        -->
+
+<VBox prefHeight="700.0" prefWidth="1300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.sqlsquad.onlinestore.MainViewController">
   <children>
     <!-- Barra superior de menús -->
     <MenuBar VBox.vgrow="NEVER">
@@ -62,21 +83,18 @@
     </MenuBar>
 
     <!-- Contenedor principal dividido en tres zonas -->
-    <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512"
-               focusTraversable="true"
-               prefHeight="-1.0"
-               prefWidth="-1.0"
-               VBox.vgrow="ALWAYS">
+    <SplitPane dividerPositions="0.13405238828967642, 0.8705701078582434" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
         <!-- MASTER: Menú de navegación -->
         <AnchorPane fx:id="masterPane">
           <children>
-            <VBox fx:id="menuVBox" spacing="10" layoutX="10.0" layoutY="10.0" prefWidth="150">
+            <VBox fx:id="menuVBox" layoutX="10.0" layoutY="10.0" prefWidth="150" spacing="10">
               <children>
-                <Label text="Menú" style="-fx-font-size: 18;" />
-                <Button text="Artículos" onAction="#handleArticulos" />
-                <Button text="Clientes" onAction="#handleClientes" />
-                <Button text="Pedidos" onAction="#handlePedidos" />
+                <Label style="-fx-font-size: 18;" text="Menú" />
+                <Button onAction="#handleArticulos" text="Añadir Artículos" />
+                <Button onAction="#handleLookArticulos" text="Mostrar Artículos" />
+                <Button onAction="#handleClientes" text="Añadir Clientes" />
+                <Button onAction="#handlePedidos" text="Añadir Pedidos" />
               </children>
             </VBox>
           </children>
@@ -107,7 +125,7 @@
       <children>
         <Label maxHeight="Infinity" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
           <font>
-            <Font size="11.0" fx:id="statusFontLeft" />
+            <Font fx:id="statusFontLeft" size="11.0" />
           </font>
           <textFill>
             <Color red="0.625" green="0.625" blue="0.625" fx:id="statusColorLeft" />
@@ -122,37 +140,3 @@
     </HBox>
   </children>
 </VBox>
-
-
-<!--
-
-          Copyright (c) 2015, 2019, Gluon and/or its affiliates.
-          All rights reserved. Use is subject to license terms.
-
-          This file is available and licensed under the following license:
-
-          Redistribution and use in source and binary forms, with or without
-          modification, are permitted provided that the following conditions
-          are met:
-
-          - Redistributions of source code must retain the above copyright
-            notice, this list of conditions and the following disclaimer.
-          - Redistributions in binary form must reproduce the above copyright
-            notice, this list of conditions and the following disclaimer in
-            the documentation and/or other materials provided with the distribution.
-          - Neither the name of Oracle Corporation nor the names of its
-            contributors may be used to endorse or promote products derived
-            from this software without specific prior written permission.
-
-          THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-          "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-          LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-          A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-          OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-          SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-          LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-          DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-          THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-          (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-          OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-        -->

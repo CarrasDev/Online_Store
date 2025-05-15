@@ -6,7 +6,7 @@
 <AnchorPane prefHeight="389.0" prefWidth="400.0"
             xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.sqlsquad.onlinestore.controlador.ArticuloViewController">
+            fx:controller="com.sqlsquad.onlinestore.view.ArticuloViewController">
     <children>
         <Label layoutX="25.0" layoutY="25.0" text="Añadir nuevo artículo" />
 

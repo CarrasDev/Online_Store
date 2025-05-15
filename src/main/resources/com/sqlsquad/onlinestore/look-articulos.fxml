@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sqlsquad.onlinestore.view.LookArticulos">
+    <children>
+        <TableView fx:id="tablaArticulos" prefHeight="380.0" prefWidth="580.0">
+            <columns>
+                <TableColumn fx:id="colCodigo" prefWidth="71.0" text="Código" />
+                <TableColumn fx:id="colDescripcion" prefWidth="221.0" text="Descripción" />
+                <TableColumn fx:id="colPrecio" minWidth="7.0" prefWidth="79.0" text="Precio Venta" />
+                <TableColumn fx:id="colGastos" text="Gastos Envío" />
+                <TableColumn fx:id="colTiempo" prefWidth="125.0" text="Tiempo Preparación" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
