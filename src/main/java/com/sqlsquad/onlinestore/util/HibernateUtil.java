@@ -1,4 +1,4 @@
-package util;
+package com.sqlsquad.onlinestore.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
