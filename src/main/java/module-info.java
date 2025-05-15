@@ -10,4 +10,6 @@ module com.sqlsquad.onlinestore {
     opens com.sqlsquad.onlinestore.modelo to org.hibernate.orm.core;
     exports com.sqlsquad.onlinestore;
     exports com.sqlsquad.onlinestore.modelo;
+    exports com.sqlsquad.onlinestore.controlador;
+    opens com.sqlsquad.onlinestore.controlador to javafx.fxml;
 }

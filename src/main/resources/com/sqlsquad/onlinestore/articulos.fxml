@@ -3,19 +3,30 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="389.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="389.0" prefWidth="400.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.sqlsquad.onlinestore.controlador.ArticuloViewController">
     <children>
         <Label layoutX="25.0" layoutY="25.0" text="Añadir nuevo artículo" />
+
         <Label layoutX="25.0" layoutY="55.0" text="Código de artículo" />
-        <TextField layoutX="25.0" layoutY="75.0" />
+        <TextField fx:id="codigo" layoutX="25.0" layoutY="75.0" />
+
         <Label layoutX="25.0" layoutY="110.0" text="Descripción" />
-        <TextField layoutX="25.0" layoutY="130.0" />
+        <TextField fx:id="descripcion" layoutX="25.0" layoutY="130.0" />
+
         <Label layoutX="25.0" layoutY="165.0" text="Precio de venta" />
-        <TextField layoutX="25.0" layoutY="185.0" />
+        <TextField fx:id="precio" layoutX="25.0" layoutY="185.0" />
+
         <Label layoutX="25.0" layoutY="220.0" text="Gastos de envío" />
-        <TextField layoutX="25.0" layoutY="240.0" />
+        <TextField fx:id="gastos" layoutX="25.0" layoutY="240.0" />
+
         <Label layoutX="25.0" layoutY="275.0" text="Tiempo de preparación" />
-        <TextField layoutX="25.0" layoutY="295.0" />
-      <Button layoutX="245.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Añadir" />
+        <TextField fx:id="tiempo" layoutX="25.0" layoutY="295.0" />
+
+      <Button fx:id="btnAdd" layoutX="51.0" layoutY="338.0" mnemonicParsing="false"
+              prefHeight="25.0" prefWidth="98.0" text="Añadir"
+              onAction="#handleAddArticulo"/>
     </children>
 </AnchorPane>
