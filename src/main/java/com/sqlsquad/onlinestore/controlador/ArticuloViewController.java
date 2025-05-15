@@ -1,6 +1,7 @@
 package com.sqlsquad.onlinestore.controlador;
 
 import com.sqlsquad.onlinestore.modelo.entity.Articulo;
+import com.sqlsquad.onlinestore.util.AppService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -14,7 +15,14 @@ public class ArticuloViewController {
     @FXML
     private Button btnAdd;
 
+    private ArticuloController articuloController;
     Articulo articuloObj = new Articulo();
+
+    @FXML
+    public void initialize() {
+        // Obtenemos el controlador de la capa de servicios
+        articuloController = AppService.getInstance().getArticuloController();
+    }
 
     // Metodo que maneja el botton "Añadir"
     @FXML

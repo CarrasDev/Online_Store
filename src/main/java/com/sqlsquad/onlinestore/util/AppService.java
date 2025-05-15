@@ -6,6 +6,7 @@ import com.sqlsquad.onlinestore.controlador.PedidoController;
 import com.sqlsquad.onlinestore.modelo.ArticuloModel;
 import com.sqlsquad.onlinestore.modelo.ClienteModel;
 import com.sqlsquad.onlinestore.modelo.PedidoModel;
+import org.hibernate.SessionFactory;
 
 public class AppService {
 
@@ -19,6 +20,8 @@ public class AppService {
     private ClienteController clienteController;
     private PedidoController pedidoController;
 
+    private SessionFactory sessionFactory;
+
     private AppService() {
         // Inicialización de modelos y controladores
         articuloModel = new ArticuloModel();
@@ -29,6 +32,9 @@ public class AppService {
         clienteController = new ClienteController(clienteModel);
         pedidoController = new PedidoController(pedidoModel, articuloModel, clienteModel);
 
+        // Inicialización de BBDD
+        sessionFactory = HibernateUtil.getSessionFactory();
+        sessionFactory.openSession();
     }
 
     public static AppService getInstance() {
@@ -48,5 +54,11 @@ public class AppService {
 
     public PedidoController getPedidoController() {
         return pedidoController;
+    }
+
+    public void cerrarBBDD() {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
     }
 }
