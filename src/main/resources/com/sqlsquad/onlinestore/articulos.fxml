@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.Label?>
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="389.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label text="Vista de Artículos" layoutX="50" layoutY="50"/>
+        <Label layoutX="25.0" layoutY="25.0" text="Añadir nuevo artículo" />
+        <Label layoutX="25.0" layoutY="55.0" text="Código de artículo" />
+        <TextField layoutX="25.0" layoutY="75.0" />
+        <Label layoutX="25.0" layoutY="110.0" text="Descripción" />
+        <TextField layoutX="25.0" layoutY="130.0" />
+        <Label layoutX="25.0" layoutY="165.0" text="Precio de venta" />
+        <TextField layoutX="25.0" layoutY="185.0" />
+        <Label layoutX="25.0" layoutY="220.0" text="Gastos de envío" />
+        <TextField layoutX="25.0" layoutY="240.0" />
+        <Label layoutX="25.0" layoutY="275.0" text="Tiempo de preparación" />
+        <TextField layoutX="25.0" layoutY="295.0" />
     </children>
 </AnchorPane>
