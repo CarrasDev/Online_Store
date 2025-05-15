@@ -3,7 +3,6 @@ package com.sqlsquad.onlinestore.controlador;
 import com.sqlsquad.onlinestore.modelo.ClienteModel;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.ClienteEstandar;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.ClientePremium;
-import com.sqlsquad.onlinestore.vista.Vista;
 
 import java.util.HashMap;
 
@@ -13,23 +12,21 @@ public class ClienteController {
 
     // TODO variables --> Modificar uso de Vista según proceda
     private final ClienteModel clienteModel;
-    private final Vista vistaTienda;
 
     // Constructor
-    public ClienteController(ClienteModel clienteModel, Vista vistaTienda) {
+    public ClienteController(ClienteModel clienteModel) {
         this.clienteModel = clienteModel;
-        this.vistaTienda = vistaTienda;
     }
 
     public void addCliente(String nombre, String domicilio, String nif, String email, Integer tipoCliente) {
         if (tipoCliente==1){
             ClientePremium cliente = new ClientePremium(nombre, domicilio, nif, email);
             clienteModel.addCliente(cliente);
-            vistaTienda.updateView("Se ha creado un cliente Premium ");
+            // TODO vistaTienda.updateView("Se ha creado un cliente Premium ");
         } else{
             ClienteEstandar cliente = new ClienteEstandar(nombre, domicilio, nif, email);
             clienteModel.addCliente(cliente);
-            vistaTienda.updateView("Se ha creado un cliente Estandar ");
+            // >TODO vistaTienda.updateView("Se ha creado un cliente Estandar ");
         }
     }
 
@@ -62,15 +59,16 @@ public class ClienteController {
             sb.append(listaClientes.get(clave).toString()).append("\n");
         }
         //Envía la cadena a la vista y hace update
-        vistaTienda.updateView(sb.toString());
+        // TODO vistaTienda.updateView(sb.toString());
     }
+
 
     //ACTUALIZA VISTA:Registra un nuevo cliente o muestra que ya se encuentra registrado
     public void esClienteNuevo(String emailCliente){
         if (!clienteModel.existeCliente(emailCliente)){
-            vistaTienda.pedirDatosCliente(emailCliente);
+            // TODO vistaTienda.pedirDatosCliente(emailCliente);
         } else{
-            vistaTienda.updateView("Este cliente se encuentra registrado");
+            // TODO vistaTienda.updateView("Este cliente se encuentra registrado");
         }
     }
 
@@ -84,7 +82,7 @@ public class ClienteController {
                 sb.append(listaClientes.get(clave).toString()).append("\n");
             }
         }
-        vistaTienda.updateView(sb.toString());
+        // TODO vistaTienda.updateView(sb.toString());
     }
 
     //Muestra un listado de clientes estandar en la vista
@@ -98,7 +96,7 @@ public class ClienteController {
             }
         }
         //Envía la cadena a la vista y hace update
-        vistaTienda.updateView(sb.toString());
+        // TODO vistaTienda.updateView(sb.toString());
     }
 
 

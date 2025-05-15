@@ -6,7 +6,6 @@ import com.sqlsquad.onlinestore.modelo.entity.Articulo;
 import com.sqlsquad.onlinestore.modelo.entity.Pedido;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.Cliente;
 import modelo.enums.TipoEstado;
-import com.sqlsquad.onlinestore.vista.Vista;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,46 +19,44 @@ public class PedidoController {
     private final PedidoModel pedidoModel;
     private final ArticuloModel articuloModel;
     private final ClienteModel clienteModel;
-    private final Vista vistaTienda;
 
     // Constructor
     public PedidoController(PedidoModel pedidoModel, ArticuloModel articuloModel,
-                            ClienteModel clienteModel, Vista vistaTienda) {
+                            ClienteModel clienteModel) {
 
         this.pedidoModel = pedidoModel;
         this.articuloModel = articuloModel;
         this.clienteModel = clienteModel;
-        this.vistaTienda = vistaTienda;
     }
 
     //ACTUALIZA MODELO: Permite añadir un pedido al modelo.
     public void addPedido(String codigoArticulo, Integer cantidadArticulos, String emailCliente) {
         if (codigoArticulo == null || codigoArticulo.isEmpty()) {
-            vistaTienda.updateView("Error: Código de artículo inválido");
+            // TODO vistaTienda.updateView("Error: Código de artículo inválido");
             return;
         }
         if (emailCliente == null || emailCliente.isEmpty()) {
-            vistaTienda.updateView("Error: Email del cliente inválido");
+            // TODO vistaTienda.updateView("Error: Email del cliente inválido");
             return;
         }
         Articulo articulo = articuloModel.getArticulo(codigoArticulo);
         if (articulo == null) {
-            vistaTienda.updateView("Error: El artículo no existe");
+            // TODO vistaTienda.updateView("Error: El artículo no existe");
             return;
         }
         Cliente cliente = clienteModel.getCliente(emailCliente);
         if (cliente == null) {
-            vistaTienda.updateView("Error: El cliente no existe");
+            // TODO vistaTienda.updateView("Error: El cliente no existe");
             return;
         }
         if (cantidadArticulos == null || cantidadArticulos <= 0) {
-            vistaTienda.updateView("Error: La cantidad debe ser mayor que cero");
+            // TODO vistaTienda.updateView("Error: La cantidad debe ser mayor que cero");
             return;
         }
         // Integer numeroPedido = modeloTienda.generarProximoPedido();
         Pedido pedido = new Pedido(articulo, cantidadArticulos, cliente, LocalDateTime.now(), TipoEstado.PENDIENTE);
         pedidoModel.addPedido(pedido);
-        vistaTienda.updateView("Pedido añadido");
+        // TODO vistaTienda.updateView("Pedido añadido");
     }
 
     //ACTUALIZA MODELO:Permite eliminar un pedido del modelo.
@@ -68,9 +65,9 @@ public class PedidoController {
     public void removePedido(Integer numeroPedido) {
         if(esBorrable(numeroPedido)){
             pedidoModel.eliminarPedido(numeroPedido);
-            vistaTienda.updateView("Pedido eliminado \n");
+            // TODO vistaTienda.updateView("Pedido eliminado \n");
         } else {
-            vistaTienda.updateView("No es posible borrar el pedido \n");
+            // TODO vistaTienda.updateView("No es posible borrar el pedido \n");
         }
     }
 
@@ -100,7 +97,7 @@ public class PedidoController {
             mostrarTodosLosPedidosPendientes();
         } else {
             if (!clienteModel.existeCliente(emailCliente)) {
-                vistaTienda.updateView("El cliente con email '" + emailCliente + "' no está registrado.\n");
+                // TODO vistaTienda.updateView("El cliente con email '" + emailCliente + "' no está registrado.\n");
                 return;
             }
             mostrarPedidoPendientesPorCliente(emailCliente);
@@ -117,7 +114,7 @@ public class PedidoController {
                 sb.append(pedido.toString()).append("\n");
             }
         }
-        vistaTienda.updateView(sb.toString());
+        // TODO vistaTienda.updateView(sb.toString());
     }
 
     //ACTUALIZA VISTA: con listado de todos los pedidos pendientes
@@ -130,7 +127,7 @@ public class PedidoController {
                 sb.append(pedido.toString()).append("\n");
             }
         }
-        vistaTienda.updateView(sb.toString());
+        // TODO vistaTienda.updateView(sb.toString());
     }
 
     //Llama al metodo correcto en base al emailCliente
@@ -140,7 +137,7 @@ public class PedidoController {
             mostrarTodosLosPedidosEnviados();
         } else {
             if (!clienteModel.existeCliente(emailCliente)) {
-                vistaTienda.updateView("El cliente con email '" + emailCliente + "' no está registrado.\n");
+                // TODO vistaTienda.updateView("El cliente con email '" + emailCliente + "' no está registrado.\n");
                 return;
             }
             mostrarPedidoEnviadosPorCliente(emailCliente);
@@ -157,7 +154,7 @@ public class PedidoController {
                 sb.append(pedido.toString()).append("\n");
             }
         }
-        vistaTienda.updateView(sb.toString());
+        // TODO vistaTienda.updateView(sb.toString());
     }
 
     ////ACTUALIZA VISTA: Crea listado de todos los pedidos enviados actualizando la vista
@@ -170,7 +167,7 @@ public class PedidoController {
                 sb.append("%s\n".formatted(pedido.toString()));
             }
         }
-        vistaTienda.updateView(sb.toString());
+        // TODO vistaTienda.updateView(sb.toString());
     }
 
 }

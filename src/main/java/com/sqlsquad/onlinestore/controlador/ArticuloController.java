@@ -2,7 +2,7 @@ package com.sqlsquad.onlinestore.controlador;
 
 import com.sqlsquad.onlinestore.modelo.entity.Articulo;
 import com.sqlsquad.onlinestore.modelo.ArticuloModel;
-import com.sqlsquad.onlinestore.vista.Vista;
+
 
 import java.util.List;
 
@@ -12,12 +12,11 @@ public class ArticuloController {
 
     // TODO variables --> Modificar uso de Vista según proceda
     private final ArticuloModel articuloModel;
-    private final Vista vistaTienda;
+
 
     // Constructor
-    public ArticuloController(ArticuloModel articuloModel, Vista vistaTienda) {
+    public ArticuloController(ArticuloModel articuloModel) {
         this.articuloModel = articuloModel;
-        this.vistaTienda = vistaTienda;
     }
 
     public void addArticulo(String codigoArticulo, String descripcion, Float precioVenta, Float gastosEnvio, Integer tiempoPreparacion) {
@@ -34,6 +33,7 @@ public class ArticuloController {
         return ((List<E>) articuloModel.getArticulos());
     }
 
+    /*
     //ACTUALIZA VISTA: Elabora listado de artículos y actualiza vista para mostrarlos
     public <E> void mostrarArticulos() {
         List<E> listaArticulos = this.getListaArticulos();
@@ -41,9 +41,11 @@ public class ArticuloController {
         for (E articulo : listaArticulos) {
             sb.append(articulo.toString()).append("\n");
         }
-        vistaTienda.updateView(sb.toString());
+         vistaTienda.updateView(sb.toString());
     }
+    */
 
+     /*
     //Comprueba si un codigo de artículo existe y procede con
     // el proceso de creacion o actualiza vista para mostrar duplicado
     public void nuevoCodigoArticulo(String codigoArticulo){
@@ -53,6 +55,7 @@ public class ArticuloController {
             vistaTienda.updateView("Artículo duplicado\n");
         }
     }
+    */
 
 
 }

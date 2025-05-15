@@ -17,7 +17,7 @@ public class AppService {
 
     private ArticuloController articuloController;
     private ClienteController clienteController;
-    private edidoController pedidoController;
+    private PedidoController pedidoController;
 
     private AppService() {
         // Inicialización de modelos y controladores
@@ -35,6 +35,7 @@ public class AppService {
         if (instance == null) {
             instance = new AppService();
         }
+        return instance;
     }
 
     public ArticuloController getArticuloController() {

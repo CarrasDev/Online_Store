@@ -3,7 +3,7 @@ package com.sqlsquad.onlinestore.DAO;
 import com.sqlsquad.onlinestore.modelo.entity.Articulo;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import util.HibernateUtil;
+import com.sqlsquad.onlinestore.util.HibernateUtil;
 
 
 import java.util.List;
