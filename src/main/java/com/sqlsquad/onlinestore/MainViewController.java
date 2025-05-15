@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
-public class HelloController {
+public class MainViewController {
 
     @FXML
     private AnchorPane viewPane;  // Contenedor para la vista dinámica
