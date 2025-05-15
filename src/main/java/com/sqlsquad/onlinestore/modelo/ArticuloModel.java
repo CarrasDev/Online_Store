@@ -1,8 +1,8 @@
-package modelo;
+package com.sqlsquad.onlinestore.modelo;
 
-import DAO.FactoryDAO;
-import DAO.IDao;
-import modelo.entity.Articulo;
+import com.sqlsquad.onlinestore.DAO.FactoryDAO;
+import com.sqlsquad.onlinestore.DAO.IDao;
+import com.sqlsquad.onlinestore.modelo.entity.Articulo;
 
 import java.util.ArrayList;
 import java.util.Collection;

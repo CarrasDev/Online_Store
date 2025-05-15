@@ -1,8 +1,8 @@
-package controlador;
+package com.sqlsquad.onlinestore.controlador;
 
-import modelo.entity.Articulo;
-import modelo.ArticuloModel;
-import vista.Vista;
+import com.sqlsquad.onlinestore.modelo.entity.Articulo;
+import com.sqlsquad.onlinestore.modelo.ArticuloModel;
+import com.sqlsquad.onlinestore.vista.Vista;
 
 import java.util.List;
 

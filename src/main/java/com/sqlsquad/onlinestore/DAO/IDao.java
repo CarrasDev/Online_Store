@@ -1,4 +1,4 @@
-package DAO;
+package com.sqlsquad.onlinestore.DAO;
 
 import java.util.Collection;
 import java.util.Optional;

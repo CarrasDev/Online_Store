@@ -1,7 +1,4 @@
-// Grupo 2 - SQL SQUAD
-
-
-package modelo.entity.cliente;
+package com.sqlsquad.onlinestore.modelo.entity.cliente;
 
 import jakarta.persistence.*;
 import modelo.enums.TipoCliente;

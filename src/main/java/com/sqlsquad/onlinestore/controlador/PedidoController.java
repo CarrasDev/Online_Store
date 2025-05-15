@@ -1,12 +1,12 @@
-package controlador;
+package com.sqlsquad.onlinestore.controlador;
 
 
-import modelo.*;
-import modelo.entity.Articulo;
-import modelo.entity.Pedido;
-import modelo.entity.cliente.Cliente;
+import com.sqlsquad.onlinestore.modelo.*;
+import com.sqlsquad.onlinestore.modelo.entity.Articulo;
+import com.sqlsquad.onlinestore.modelo.entity.Pedido;
+import com.sqlsquad.onlinestore.modelo.entity.cliente.Cliente;
 import modelo.enums.TipoEstado;
-import vista.Vista;
+import com.sqlsquad.onlinestore.vista.Vista;
 
 import java.time.LocalDateTime;
 import java.util.List;

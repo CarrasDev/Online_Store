@@ -1,4 +1,4 @@
-package DAO;
+package com.sqlsquad.onlinestore.DAO;
 
 // Factory nos permite clasificar nuestros DAOS y tener una única forma centralizada para crear Objetos DAO
 

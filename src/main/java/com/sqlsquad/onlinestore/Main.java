@@ -1,4 +1,4 @@
-
+/*
 import controlador.ArticuloController;
 import controlador.ClienteController;
 import controlador.PedidoController;
@@ -8,7 +8,7 @@ import modelo.PedidoModel;
 import util.HibernateUtil;
 import vista.Vista;
 
-/*
+
 public class Main {
     public static void main(String[] args) {
 

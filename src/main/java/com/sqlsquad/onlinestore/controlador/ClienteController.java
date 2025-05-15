@@ -1,9 +1,9 @@
-package controlador;
+package com.sqlsquad.onlinestore.controlador;
 
-import modelo.ClienteModel;
-import modelo.entity.cliente.ClienteEstandar;
-import modelo.entity.cliente.ClientePremium;
-import vista.Vista;
+import com.sqlsquad.onlinestore.modelo.ClienteModel;
+import com.sqlsquad.onlinestore.modelo.entity.cliente.ClienteEstandar;
+import com.sqlsquad.onlinestore.modelo.entity.cliente.ClientePremium;
+import com.sqlsquad.onlinestore.vista.Vista;
 
 import java.util.HashMap;
 

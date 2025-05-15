@@ -1,6 +1,4 @@
-package modelo.entity;
-
-// Grupo 2 - SQL SQUAD
+package com.sqlsquad.onlinestore.modelo.entity;
 
 import jakarta.persistence.*;
 

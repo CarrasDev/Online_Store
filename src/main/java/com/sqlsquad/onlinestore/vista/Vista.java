@@ -1,8 +1,8 @@
-package vista;
+package com.sqlsquad.onlinestore.vista;
 
-import controlador.ArticuloController;
-import controlador.ClienteController;
-import controlador.PedidoController;
+import com.sqlsquad.onlinestore.controlador.ArticuloController;
+import com.sqlsquad.onlinestore.controlador.ClienteController;
+import com.sqlsquad.onlinestore.controlador.PedidoController;
 import util.HibernateUtil;
 
 import java.util.Scanner;

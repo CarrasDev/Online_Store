@@ -1,6 +1,6 @@
-package DAO;
+package com.sqlsquad.onlinestore.DAO;
 
-import modelo.entity.Pedido;
+import com.sqlsquad.onlinestore.modelo.entity.Pedido;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;

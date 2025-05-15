@@ -1,10 +1,8 @@
-// Grupo 2 - SQL SQUAD
-
-package modelo.entity;
+package com.sqlsquad.onlinestore.modelo.entity;
 
 import jakarta.persistence.*;
-import modelo.entity.cliente.Cliente;
-import modelo.entity.cliente.ClientePremium;
+import com.sqlsquad.onlinestore.modelo.entity.cliente.Cliente;
+import com.sqlsquad.onlinestore.modelo.entity.cliente.ClientePremium;
 import modelo.enums.TipoEstado;
 
 import java.time.Duration;
