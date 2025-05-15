@@ -16,5 +16,6 @@
         <TextField layoutX="25.0" layoutY="240.0" />
         <Label layoutX="25.0" layoutY="275.0" text="Tiempo de preparación" />
         <TextField layoutX="25.0" layoutY="295.0" />
+      <Button layoutX="245.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Añadir" />
     </children>
 </AnchorPane>
