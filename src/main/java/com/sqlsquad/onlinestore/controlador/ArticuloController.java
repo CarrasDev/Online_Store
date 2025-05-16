@@ -35,9 +35,10 @@ public class ArticuloController {
         return (articuloModel.existeArticulo(codigoArticulo));
     }
 
+    // TODO verificar
     //LEE MODELO:Obtiene y retorna un listado de todos los articulos del modelo
-    private <E> List<E> getListaArticulos() {
-        return ((List<E>) articuloModel.getArticulos());
+    public List<Articulo> getListaArticulos() {
+        return articuloModel.getArticulos();
     }
 
     /*
