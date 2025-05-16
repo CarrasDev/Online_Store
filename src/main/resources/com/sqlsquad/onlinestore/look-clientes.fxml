@@ -5,10 +5,12 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sqlsquad.onlinestore.view.LookClientes">
     <children>
+        <Label layoutX="20.0" layoutY="16.0" text="Mostrar Clientes" />
+        <Label layoutX="530.0" layoutY="18.0" text="Mostrar:" />
         <!-- ComboBox para seleccionar filtro -->
-        <ComboBox fx:id="filtroTipoCliente" layoutX="20" layoutY="10" prefWidth="150" promptText="Filtrar por" />
+        <ComboBox fx:id="filtroTipoCliente" layoutX="590.0" layoutY="14.0" prefWidth="150" promptText="Filtrar por" />
         <!-- Tabla Clientes -->
-        <TableView fx:id="tablaClientes" layoutX="20" layoutY="50" prefHeight="430.0" prefWidth="750.0">
+        <TableView fx:id="tablaClientes" layoutX="20" layoutY="50" prefHeight="585.0" prefWidth="750.0">
             <columns>
                 <TableColumn fx:id="colNombre" text="Nombre" />
                 <TableColumn fx:id="colEmail" text="Email" />
