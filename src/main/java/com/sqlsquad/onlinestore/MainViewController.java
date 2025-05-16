@@ -19,13 +19,13 @@ public class MainViewController {
     @FXML
     public void initialize() {
         // Cargamos una vista predeterminada, por ejemplo, la vista de Artículos. // TODO Si hay tiempo una vista de presentación
-        loadView("articulos.fxml");
+        loadView("add-articulos.fxml");
     }
 
     // Maneja el clic en el botón "Artículos"
     @FXML
     private void handleArticulos(ActionEvent event) {
-        loadView("articulos.fxml");
+        loadView("add-articulos.fxml");
     }
 
     // Maneja el clic en el botón "Mostrar Artículos"
@@ -37,7 +37,7 @@ public class MainViewController {
     // Maneja el clic en el botón "Clientes"
     @FXML
     private void handleClientes(ActionEvent event) {
-        loadView("clientes.fxml");
+        loadView("add-clientes.fxml");
     }
 
     // Maneja el clic en el botón "Mostrar Clientes"
@@ -49,7 +49,7 @@ public class MainViewController {
     // Maneja el clic en el botón "Pedidos"
     @FXML
     private void handlePedidos(ActionEvent event) {
-        loadView("pedidos.fxml");
+        loadView("add-pedidos.fxml");
     }
 
     /**

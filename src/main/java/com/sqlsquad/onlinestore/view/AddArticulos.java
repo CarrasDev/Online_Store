@@ -10,7 +10,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 
-public class ArticuloViewController {
+public class AddArticulos {
 
     @FXML
     private TextField codigo, descripcion, precio, gastos, tiempo;

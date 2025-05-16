@@ -6,7 +6,7 @@
 <AnchorPane prefHeight="389.0" prefWidth="400.0"
             xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.sqlsquad.onlinestore.view.ArticuloViewController">
+            fx:controller="com.sqlsquad.onlinestore.view.AddClientes">
     <children>
         <Label layoutX="25.0" layoutY="25.0" text="Añadir nuevo artículo" />
 
@@ -25,8 +25,10 @@
         <Label layoutX="25.0" layoutY="275.0" text="Tiempo de preparación" />
         <TextField fx:id="tiempo" layoutX="25.0" layoutY="295.0" />
 
-      <Button fx:id="btnAdd" layoutX="51.0" layoutY="338.0" mnemonicParsing="false"
-              prefHeight="25.0" prefWidth="98.0" text="Añadir"
-              onAction="#handleAddArticulo"/>
+        <Button fx:id="btnAdd" layoutX="51.0" layoutY="338.0" mnemonicParsing="false"
+                prefHeight="25.0" prefWidth="98.0" text="Añadir"
+                onAction="#handleAddArticulo"/>
     </children>
 </AnchorPane>
+
+<!-- TODO Pendiente adaptar a Cliente -->

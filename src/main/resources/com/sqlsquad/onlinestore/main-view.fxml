@@ -104,7 +104,7 @@
         <!-- VIEW: Contenedor para cargar dinámicamente las vistas -->
         <ScrollPane fx:id="viewScrollPane" prefHeight="-1.0" prefWidth="-1.0">
           <content>
-            <AnchorPane fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="750.0" prefWidth="430.0">   <!-- Controlar ancho y alto para evitar scroll -->
+            <AnchorPane fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="20.0" prefWidth="30.0">   <!-- Controlar ancho y alto para evitar scroll -->
               <children>
                 <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="-fx-font-size: 16;" text="Vista inicial" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" />
               </children>
