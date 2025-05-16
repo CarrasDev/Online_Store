@@ -17,7 +17,7 @@ public class MainAPP extends Application {
 
         // Inicializar la vista principal
         FXMLLoader fxmlLoader = new FXMLLoader(MainAPP.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
+        Scene scene = new Scene(fxmlLoader.load(), 1100, 700);
         stage.setTitle("SQLSquad Online Store - JavaFX");
         stage.setScene(scene);
         // Asegurar cierre de la BBDD al cerrar la ventana principal

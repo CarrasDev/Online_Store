@@ -8,7 +8,7 @@
         <!-- ComboBox para seleccionar filtro -->
         <ComboBox fx:id="filtroTipoCliente" layoutX="20" layoutY="10" prefWidth="150" promptText="Filtrar por" />
         <!-- Tabla Clientes -->
-        <TableView fx:id="tablaClientes" layoutX="20" layoutY="50" prefHeight="380.0" prefWidth="580.0">
+        <TableView fx:id="tablaClientes" layoutX="20" layoutY="50" prefHeight="430.0" prefWidth="750.0">
             <columns>
                 <TableColumn fx:id="colNombre" text="Nombre" />
                 <TableColumn fx:id="colEmail" text="Email" />
