@@ -30,8 +30,6 @@ public class LookArticulos {
         cargarArticulos();
     }
 
-
-    // TODO Verificar y seguir...
     @FXML
     private void cargarArticulos() {
         ObservableList<ArticuloDTO> listaArticulos = FXCollections.observableArrayList();
@@ -50,7 +48,4 @@ public class LookArticulos {
         colGastos.setCellValueFactory(cellData -> cellData.getValue().gastosEnvioProperty().asObject());
         colTiempo.setCellValueFactory(cellData -> cellData.getValue().tiempoPreparacionProperty().asObject());
     }
-
-
-
 }

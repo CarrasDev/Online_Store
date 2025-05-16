@@ -4,7 +4,9 @@ import com.sqlsquad.onlinestore.controlador.ArticuloController;
 import com.sqlsquad.onlinestore.modelo.entity.Articulo;
 import com.sqlsquad.onlinestore.util.AppService;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 
@@ -62,8 +64,32 @@ public class ArticuloViewController {
                 articuloController.addArticulo(articuloObj);
             } else {
                 // TODO cambiar metodo
-                System.out.println("Articulo ya existe");
+                mostrarError("Este Artículo ya existe");
             }
         }
     }
+
+    private void mostrarError(String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+        alerta.setTitle("Error");
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+
+        // Espera interacción del usuario y limpia los campos
+        alerta.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                limpiarCampos();
+            }
+        });
+    }
+
+    private void limpiarCampos() {
+        codigo.setText("");
+        descripcion.setText("");
+        precio.setText("");
+        gastos.setText("");
+        tiempo.setText("");
+    }
+
+
 }
