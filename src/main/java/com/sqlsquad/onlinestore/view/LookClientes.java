@@ -4,8 +4,8 @@ import com.sqlsquad.onlinestore.controlador.ClienteController;
 import com.sqlsquad.onlinestore.modelo.DTO.ClienteDTO;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.Cliente;
 import com.sqlsquad.onlinestore.util.AppService;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,22 +31,28 @@ public class LookClientes {
 
         // Cargar clientes de la BBDD
         // TODO buscar forma de mostrar en vista: Todos, Estandar y Premium
-        // cargarClientes();
+        cargarClientes();
     }
 
     @FXML
     private void cargarClientes() {
-        Observable<ClienteDTO> listaClientes = FXCollections.observableArrayList();
+        ObservableList<ClienteDTO> listaClientes = FXCollections.observableArrayList(); // TODO List o ArrayList ??
 
         // Convertir cada cliente en un ClienteDTO
         for (Cliente cliente : clienteController.getListaClientes()) {
-            listaClientes.add(new clienteDTO(cliente));
+            listaClientes.add(new ClienteDTO(cliente));
         }
 
-        tablaClientes.setItem(listaClientes);
+        // Agregamos la lista convertida
+        tablaClientes.setItems(listaClientes);
 
-        // TODO Vincular propiedades observables con la tabla
-
-
+        // Vincular propiedades observables con la tabla
+        colEmail.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
+        colNombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        colNif.setCellValueFactory(cellData -> cellData.getValue().nifProperty());
+        colDomicilio.setCellValueFactory(cellData -> cellData.getValue().domicilioProperty());
+        colCuotaAnual.setCellValueFactory(cellData -> cellData.getValue().cuotaAnualProperty().asObject());
+        colDescuento.setCellValueFactory(cellData -> cellData.getValue().descuentoProperty().asObject());
+        colTipoCliente.setCellValueFactory(cellData -> cellData.getValue().tipoClienteProperty());
     }
 }

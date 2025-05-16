@@ -39,6 +39,7 @@ public class LookArticulos {
             listaArticulos.add(new ArticuloDTO(articulo));
         }
 
+        // Agregamos la Lista convertida
         tablaArticulos.setItems(listaArticulos);
 
         // Vincular propiedades observables con la tabla

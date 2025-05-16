@@ -5,7 +5,6 @@ import com.sqlsquad.onlinestore.DAO.IDao;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.Cliente;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 
 public class ClienteModel {
