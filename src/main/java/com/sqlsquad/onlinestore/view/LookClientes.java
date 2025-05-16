@@ -36,7 +36,7 @@ public class LookClientes {
 
     @FXML
     private void cargarClientes() {
-        ObservableList<ClienteDTO> listaClientes = FXCollections.observableArrayList(); // TODO List o ArrayList ??
+        ObservableList<ClienteDTO> listaClientes = FXCollections.observableArrayList();
 
         // Convertir cada cliente en un ClienteDTO
         for (Cliente cliente : clienteController.getListaClientes()) {

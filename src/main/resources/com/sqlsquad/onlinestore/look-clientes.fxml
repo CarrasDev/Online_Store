@@ -3,19 +3,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.sqlsquad.onlinestore.view.LookClientes">
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sqlsquad.onlinestore.view.LookClientes">
     <children>
-        <TableView fx:id="tablaClientes" prefHeight="380.0" prefWidth="580.0">
+        <!-- ComboBox para seleccionar filtro -->
+        <ComboBox fx:id="filtroTipoCliente" layoutX="20" layoutY="10" prefWidth="150" promptText="Filtrar por" />
+        <!-- Tabla Clientes -->
+        <TableView fx:id="tablaClientes" layoutX="20" layoutY="50" prefHeight="380.0" prefWidth="580.0">
             <columns>
-                <TableColumn text="Nombre" fx:id="colNombre" />
-                <TableColumn text="Email" fx:id="colEmail" />
-                <TableColumn text="NIF" fx:id="colNif" />
-                <TableColumn text="Domicilio" fx:id="colDomicilio" />
-                <TableColumn text="Cuota Anual" fx:id="colCuotaAnual" />
-                <TableColumn text="Descuento" fx:id="colDescuento" />
-                <TableColumn text="Tipo Cliente" fx:id="colTipoCliente" />
+                <TableColumn fx:id="colNombre" text="Nombre" />
+                <TableColumn fx:id="colEmail" text="Email" />
+                <TableColumn fx:id="colNif" text="NIF" />
+                <TableColumn fx:id="colDomicilio" text="Domicilio" />
+                <TableColumn fx:id="colCuotaAnual" text="Cuota Anual" />
+                <TableColumn fx:id="colDescuento" text="Descuento" />
+                <TableColumn fx:id="colTipoCliente" text="Tipo Cliente" />
             </columns>
         </TableView>
     </children>
