@@ -1,16 +1,17 @@
 package com.sqlsquad.onlinestore.controlador;
 
 import com.sqlsquad.onlinestore.modelo.ClienteModel;
+import com.sqlsquad.onlinestore.modelo.entity.cliente.Cliente;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.ClienteEstandar;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.ClientePremium;
 
 import java.util.HashMap;
+import java.util.List;
 
 /// Controlador para la Gestión de Cliente
 
 public class ClienteController {
 
-    // TODO variables --> Modificar uso de Vista según proceda
     private final ClienteModel clienteModel;
 
     // Constructor
@@ -18,6 +19,7 @@ public class ClienteController {
         this.clienteModel = clienteModel;
     }
 
+    // TODO verificar como hacer llegar cliente
     public void addCliente(String nombre, String domicilio, String nif, String email, Integer tipoCliente) {
         if (tipoCliente==1){
             ClientePremium cliente = new ClientePremium(nombre, domicilio, nif, email);
@@ -30,13 +32,9 @@ public class ClienteController {
         }
     }
 
-    //LEE MODELO:Recupera cliente del modelo
-    //private <T> T getCliente(String email) {
-    //    return ((T) modeloTienda.getCliente(email));
-    //}
-    //LEE MODELO:Recupera el listado de clientes del modelo
-    private <K,V> HashMap<K,V> getListaClientes() {
-        return ((HashMap<K,V>) clienteModel.getListaClientes());
+
+    public List<Cliente> getListaClientes() {
+        return clienteModel.getListaClientes();
     }
 
     //Comprueba que se trata de un objeto cliente premium
@@ -49,6 +47,7 @@ public class ClienteController {
         return cliente.getClass()== ClienteEstandar.class;
     }
 
+/*
     ////ACTUALIZA VISTA:Envia el listado de clientes a la vista en formato String para
     //que se muestre al usuario mediante updateView
     public <K,V> void mostrarClientes() {
@@ -61,8 +60,8 @@ public class ClienteController {
         //Envía la cadena a la vista y hace update
         // TODO vistaTienda.updateView(sb.toString());
     }
-
-
+*/
+/*
     //ACTUALIZA VISTA:Registra un nuevo cliente o muestra que ya se encuentra registrado
     public void esClienteNuevo(String emailCliente){
         if (!clienteModel.existeCliente(emailCliente)){
@@ -71,7 +70,8 @@ public class ClienteController {
             // TODO vistaTienda.updateView("Este cliente se encuentra registrado");
         }
     }
-
+*/
+    /*
     //ACTUALIZA VISTA: Muestra un listado de clientes premium en la vista
     public <K,V> void mostrarClientesPremium() {
         HashMap<K,V> listaClientes = getListaClientes();
@@ -84,7 +84,9 @@ public class ClienteController {
         }
         // TODO vistaTienda.updateView(sb.toString());
     }
+     */
 
+    /*
     //Muestra un listado de clientes estandar en la vista
     public <K,V> void mostrarClientesEstandar() {
         HashMap<K,V> listaClientes = getListaClientes();
@@ -98,6 +100,7 @@ public class ClienteController {
         //Envía la cadena a la vista y hace update
         // TODO vistaTienda.updateView(sb.toString());
     }
+    */
 
 
 }

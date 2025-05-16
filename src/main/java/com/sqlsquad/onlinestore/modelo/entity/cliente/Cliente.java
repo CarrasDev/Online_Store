@@ -64,6 +64,9 @@ public abstract class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
+    public TipoCliente getTipoCliente() {
+        return tipoCliente;
+    }
 
     @Override
     public String toString() {

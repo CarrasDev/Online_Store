@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.sqlsquad.onlinestore.view.LookClientes">
+    <children>
+        <TableView fx:id="tablaClientes" prefHeight="380.0" prefWidth="580.0">
+            <columns>
+                <TableColumn text="Nombre" fx:id="colNombre" />
+                <TableColumn text="Email" fx:id="colEmail" />
+                <TableColumn text="NIF" fx:id="colNif" />
+                <TableColumn text="Domicilio" fx:id="colDomicilio" />
+                <TableColumn text="Cuota Anual" fx:id="colCuotaAnual" />
+                <TableColumn text="Descuento" fx:id="colDescuento" />
+                <TableColumn text="Tipo Cliente" fx:id="colTipoCliente" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

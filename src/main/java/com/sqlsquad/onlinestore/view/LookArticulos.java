@@ -26,7 +26,7 @@ public class LookArticulos {
         // Obtenemos el controlador de la capa de servicios
         articuloController = AppService.getInstance().getArticuloController();
 
-        // Cargar Artículos por defecto
+        // Cargar Artículos de la BBDD
         cargarArticulos();
     }
 

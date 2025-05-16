@@ -12,7 +12,8 @@ public class ArticuloDTO {
     private final IntegerProperty tiempoPreparacion;
 
     // Constructor con propiedades observables
-    public ArticuloDTO(String codigoArticulo, String descripcion, Float precioVenta, Float gastosEnvio, Integer tiempoPreparacion) {
+    public ArticuloDTO(String codigoArticulo, String descripcion, Float precioVenta,
+                       Float gastosEnvio, Integer tiempoPreparacion) {
         this.codigoArticulo = new SimpleStringProperty(codigoArticulo);
         this.descripcion = new SimpleStringProperty(descripcion);
         this.precioVenta = new SimpleFloatProperty(precioVenta);

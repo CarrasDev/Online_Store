@@ -6,6 +6,7 @@ import com.sqlsquad.onlinestore.modelo.entity.cliente.Cliente;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 public class ClienteModel {
 
@@ -19,21 +20,11 @@ public class ClienteModel {
         return clienteDAO.getById(email).orElse(null);
     }
 
-    public HashMap<String, Cliente> getListaClientes() {
-        // Recibimos un ArrayList de la BBDD y lo transformamos en HashMap
-        HashMap<String, Cliente> clientes = new HashMap<>();
-
+    // TODO convertir a Lista NO HASHMAP
+    public List<Cliente> getListaClientes() {
         IDao<Cliente> clienteDAO = FactoryDAO.getIDAO("CLIENTE");
         Collection<Cliente> listaClientes = clienteDAO.getAll();
-
-        if (listaClientes != null) {
-            for (Cliente cliente : listaClientes) {
-                clientes.put(cliente.getEmail(), cliente);
-            }
-        } else {
-            throw new IllegalStateException("Lista de clientes vacía");
-        }
-        return clientes;
+        return (List<Cliente>) listaClientes;
     }
 
     public boolean existeCliente(String email) {
