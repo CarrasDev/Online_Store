@@ -3,16 +3,18 @@ package com.sqlsquad.onlinestore.view;
 import com.sqlsquad.onlinestore.controlador.ClienteController;
 import com.sqlsquad.onlinestore.modelo.DTO.ClienteDTO;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.Cliente;
+import com.sqlsquad.onlinestore.modelo.entity.cliente.ClienteEstandar;
+import com.sqlsquad.onlinestore.modelo.entity.cliente.ClientePremium;
 import com.sqlsquad.onlinestore.util.AppService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class LookClientes {
 
-    // TODO @FXML de tab
     @FXML private TableView<ClienteDTO> tablaClientes;
     @FXML private TableColumn<ClienteDTO, String> colEmail;
     @FXML private TableColumn<ClienteDTO, String> colNombre;
@@ -22,6 +24,8 @@ public class LookClientes {
     @FXML private TableColumn<ClienteDTO, Integer> colDescuento;
     @FXML private TableColumn<ClienteDTO, String> colTipoCliente;
 
+    @FXML private ComboBox<String> filtroTipoCliente;
+
     private ClienteController clienteController;
 
     @FXML
@@ -29,10 +33,16 @@ public class LookClientes {
         // Obtenemos el controlador de la capa de servicio
         clienteController = AppService.getInstance().getClienteController();
 
-        // Cargar clientes de la BBDD
-        // TODO buscar forma de mostrar en vista: Todos, Estandar y Premium
+        filtroTipoCliente.getItems().addAll("Todos", "Premium", "Estandar");
+        filtroTipoCliente.setValue("Todos"); // Por defecto Todos los clientes
+
+        // Evento para cambiar el filtro
+        filtroTipoCliente.setOnAction(e -> filtrarClientes());
+
+        // Carga inicial
         cargarClientes();
     }
+
 
     @FXML
     private void cargarClientes() {
@@ -55,4 +65,20 @@ public class LookClientes {
         colDescuento.setCellValueFactory(cellData -> cellData.getValue().descuentoProperty().asObject());
         colTipoCliente.setCellValueFactory(cellData -> cellData.getValue().tipoClienteProperty());
     }
+
+    private void filtrarClientes() {
+        ObservableList<ClienteDTO> listaClientes = FXCollections.observableArrayList();
+
+        String filtro = filtroTipoCliente.getValue();
+
+        for (Cliente cliente : clienteController.getListaClientes()) {
+            if (filtro.equals("Todos")
+                    || (filtro.equals("Premium") && cliente instanceof ClientePremium)
+                    || filtro.equals("Estandar") && cliente instanceof ClienteEstandar) {
+                listaClientes.add(new ClienteDTO(cliente));
+            }
+        }
+        tablaClientes.setItems(listaClientes);
+    }
+
 }

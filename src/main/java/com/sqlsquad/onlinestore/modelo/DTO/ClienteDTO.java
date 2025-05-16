@@ -26,7 +26,7 @@ public class ClienteDTO {
             this.cuotaAnual = new SimpleFloatProperty(((ClientePremium) cliente).getCuotaAnual());
             this.descuento = new SimpleIntegerProperty(((ClientePremium) cliente).getDescuento());
         } else {
-            this.cuotaAnual = new SimpleFloatProperty(0.0f);
+            this.cuotaAnual = new SimpleFloatProperty(0.00f);
             this.descuento = new SimpleIntegerProperty(0);
         }
     }
