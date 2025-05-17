@@ -27,6 +27,6 @@
 
       <Button fx:id="btnAdd" layoutX="51.0" layoutY="338.0" mnemonicParsing="false"
               prefHeight="25.0" prefWidth="98.0" text="Añadir"
-              onAction="#handleAddArticulo"/>
+              onAction="#AddArticulo"/>
     </children>
 </AnchorPane>

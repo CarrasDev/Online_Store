@@ -14,9 +14,7 @@ public class AddArticulos {
 
     @FXML
     private TextField codigo, descripcion, precio, gastos, tiempo;
-
-    @FXML
-    private Button btnAdd;
+    @FXML private Button btnAdd;
 
     private ArticuloController articuloController;
     Articulo articuloObj = new Articulo();
@@ -29,7 +27,7 @@ public class AddArticulos {
 
     // Metodo que maneja el botton "Añadir"
     @FXML
-    private void handleAddArticulo() {
+    private void AddArticulo() {
         boolean error = false;
 
         // TODO Buscar otra forma de presentar los errores
