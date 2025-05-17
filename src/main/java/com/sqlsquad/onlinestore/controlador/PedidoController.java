@@ -5,7 +5,7 @@ import com.sqlsquad.onlinestore.modelo.*;
 import com.sqlsquad.onlinestore.modelo.entity.Articulo;
 import com.sqlsquad.onlinestore.modelo.entity.Pedido;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.Cliente;
-import modelo.enums.TipoEstado;
+import com.sqlsquad.onlinestore.modelo.enums.TipoEstado;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -3,7 +3,7 @@ package com.sqlsquad.onlinestore.modelo.entity;
 import jakarta.persistence.*;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.Cliente;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.ClientePremium;
-import modelo.enums.TipoEstado;
+import com.sqlsquad.onlinestore.modelo.enums.TipoEstado;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

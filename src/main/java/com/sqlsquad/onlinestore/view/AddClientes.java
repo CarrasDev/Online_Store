@@ -44,7 +44,6 @@ public class AddClientes {
 
         // Gestión tipo cliente
         String tipoClienteText = ((RadioButton) tipoClienteGroup.getSelectedToggle()).getText();
-        // TODO verificar importación de enums correctamente
         TipoCliente tipoCliente = TipoCliente.valueOf(tipoClienteText.toUpperCase());
 
         Cliente nuevoCliente;

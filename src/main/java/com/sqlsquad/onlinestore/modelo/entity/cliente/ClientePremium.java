@@ -1,7 +1,7 @@
 package com.sqlsquad.onlinestore.modelo.entity.cliente;
 
 import jakarta.persistence.*;
-import modelo.enums.TipoCliente;
+import com.sqlsquad.onlinestore.modelo.enums.TipoCliente;
 
 
 

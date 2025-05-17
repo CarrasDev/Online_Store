@@ -3,7 +3,7 @@ package com.sqlsquad.onlinestore.modelo;
 import com.sqlsquad.onlinestore.DAO.FactoryDAO;
 import com.sqlsquad.onlinestore.DAO.IDao;
 import com.sqlsquad.onlinestore.modelo.entity.Pedido;
-import modelo.enums.TipoEstado;
+import com.sqlsquad.onlinestore.modelo.enums.TipoEstado;
 
 import java.util.ArrayList;
 import java.util.Collection;
