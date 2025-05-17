@@ -78,10 +78,9 @@ public class AddClientes {
 
     private void limpiarCampos() {
         // TODO Adaptar campos a cliente
-        codigo.setText("");
-        descripcion.setText("");
-        precio.setText("");
-        gastos.setText("");
-        tiempo.setText("");
+        email.setText("");
+        nif.setText("");
+        nombre.setText("");
+        domicilio.setText("");
     }
 }

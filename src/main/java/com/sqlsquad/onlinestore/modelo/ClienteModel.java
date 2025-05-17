@@ -19,7 +19,6 @@ public class ClienteModel {
         return clienteDAO.getById(email).orElse(null);
     }
 
-    // TODO convertir a Lista NO HASHMAP
     public List<Cliente> getListaClientes() {
         IDao<Cliente> clienteDAO = FactoryDAO.getIDAO("CLIENTE");
         Collection<Cliente> listaClientes = clienteDAO.getAll();
