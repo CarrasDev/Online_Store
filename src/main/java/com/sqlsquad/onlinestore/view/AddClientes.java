@@ -17,8 +17,7 @@ public class AddClientes {
     @FXML private ToggleGroup tipoClienteGroup;
     @FXML private RadioButton radioPremium, radioEstandar;
     @FXML private Button btnAdd;
-
-    // TODO pendiente declarar más cosas
+    
     private ClienteController clienteController;
 
     @FXML
@@ -63,6 +62,7 @@ public class AddClientes {
 
         if (nif.getText().isEmpty()) {
             nifError.setText("⚠ Campo obligatorio");
+            error = true;
         } else if (!Validator.esDniONieValido(nif.getText())) {
             nifError.setText("⚠ Formato incorrecto");
             error = true;
@@ -85,19 +85,17 @@ public class AddClientes {
         String tipoClienteText = ((RadioButton) tipoClienteGroup.getSelectedToggle()).getText();
         TipoCliente tipoCliente = TipoCliente.valueOf(tipoClienteText.toUpperCase());
 
-        // Creación de cliente
         Cliente nuevoCliente;
+        // Creación de cliente
         if (tipoCliente == TipoCliente.PREMIUM) {
-            nuevoCliente = new ClientePremium(emailText, nombreText, nifText, domicilioText);
+            nuevoCliente = new ClientePremium(nombreText, domicilioText, nifText, emailText);
         } else {
-            nuevoCliente = new ClienteEstandar(emailText, nombreText, nifText, domicilioText);
+            nuevoCliente = new ClienteEstandar(nombreText, domicilioText, nifText, emailText);
         }
 
         // Verificar si el cliente ya existe antes de guardarlo
         if (!clienteController.existeCliente(nuevoCliente.getEmail())) {
-                // TODO Control de trazas, BBDD desconectada
-                System.out.println("Cliente guardado: " + nuevoCliente);
-                // clienteController.addCliente(nuevoCliente);
+                clienteController.addCliente(nuevoCliente);
         } else {
                 mostrarError("Este Cliente ya existe");
         }
@@ -105,7 +103,7 @@ public class AddClientes {
 
     private void mostrarError(String mensaje) {
         Alert alerta = new Alert(Alert.AlertType.WARNING);
-        alerta.setTitle("Error");
+        alerta.setTitle("Atención");
         alerta.setHeaderText(null);
         alerta.setContentText(mensaje);
 
@@ -118,7 +116,6 @@ public class AddClientes {
     }
 
     private void limpiarCampos() {
-        // TODO Adaptar campos a cliente
         email.setText("");
         nif.setText("");
         nombre.setText("");

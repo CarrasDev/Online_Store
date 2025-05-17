@@ -21,7 +21,7 @@
 
         <Label layoutX="25.0" layoutY="165.0" text="Nif" />
         <TextField fx:id="nif" layoutX="25.0" layoutY="185.0" />
-        <Label fx:id="niflError" layoutX="180.0" layoutY="190.0" text="" textFill="red" />
+        <Label fx:id="nifError" layoutX="180.0" layoutY="190.0" text="" textFill="red" />
 
         <Label layoutX="25.0" layoutY="220.0" text="Domicilio" />
         <TextField fx:id="domicilio" layoutX="25.0" layoutY="240.0" />

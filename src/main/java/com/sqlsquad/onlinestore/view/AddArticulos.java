@@ -60,9 +60,7 @@ public class AddArticulos {
         if (!error) {
             // Si no existe articulo lo guarda
             if (!articuloController.existeArticulo(articuloObj.getCodigoArticulo())) {
-                // TODO Control de trazas, BBDD desconectada
-                System.out.println("Articulo guardado: " + articuloObj);
-                // articuloController.addArticulo(articuloObj);
+                articuloController.addArticulo(articuloObj);
             } else {
                 mostrarError("Este Artículo ya existe");
             }
@@ -71,7 +69,7 @@ public class AddArticulos {
 
     private void mostrarError(String mensaje) {
         Alert alerta = new Alert(Alert.AlertType.WARNING);
-        alerta.setTitle("Error");
+        alerta.setTitle("Atención");
         alerta.setHeaderText(null);
         alerta.setContentText(mensaje);
 
