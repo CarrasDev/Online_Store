@@ -15,6 +15,7 @@ module com.sqlsquad.onlinestore {
 
     exports com.sqlsquad.onlinestore;
     exports com.sqlsquad.onlinestore.modelo;
+    exports com.sqlsquad.onlinestore.modelo.enums;
     exports com.sqlsquad.onlinestore.controlador;
     exports com.sqlsquad.onlinestore.view;
 }

@@ -5,7 +5,6 @@ import com.sqlsquad.onlinestore.modelo.entity.cliente.Cliente;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.ClienteEstandar;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.ClientePremium;
 
-import java.util.HashMap;
 import java.util.List;
 
 /// Controlador para la Gestión de Cliente
@@ -19,19 +18,9 @@ public class ClienteController {
         this.clienteModel = clienteModel;
     }
 
-    // TODO verificar como hacer llegar cliente
-    public void addCliente(String nombre, String domicilio, String nif, String email, Integer tipoCliente) {
-        if (tipoCliente==1){
-            ClientePremium cliente = new ClientePremium(nombre, domicilio, nif, email);
-            clienteModel.addCliente(cliente);
-            // TODO vistaTienda.updateView("Se ha creado un cliente Premium ");
-        } else{
-            ClienteEstandar cliente = new ClienteEstandar(nombre, domicilio, nif, email);
-            clienteModel.addCliente(cliente);
-            // >TODO vistaTienda.updateView("Se ha creado un cliente Estandar ");
-        }
+    public void addCliente(Cliente cliente) {
+        clienteModel.addCliente(cliente);
     }
-
 
     public List<Cliente> getListaClientes() {
         return clienteModel.getListaClientes();

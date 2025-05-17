@@ -4,6 +4,7 @@ import com.sqlsquad.onlinestore.controlador.ClienteController;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.Cliente;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.ClienteEstandar;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.ClientePremium;
+import com.sqlsquad.onlinestore.modelo.enums.TipoCliente;
 import com.sqlsquad.onlinestore.util.AppService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -44,10 +45,10 @@ public class AddClientes {
         // Gestión tipo cliente
         String tipoClienteText = ((RadioButton) tipoClienteGroup.getSelectedToggle()).getText();
         // TODO verificar importación de enums correctamente
-        modelo.enums.TipoCliente tipoCliente = modelo.enums.TipoCliente.valueOf(tipoClienteText.toUpperCase());
+        TipoCliente tipoCliente = TipoCliente.valueOf(tipoClienteText.toUpperCase());
 
         Cliente nuevoCliente;
-        if (tipoCliente == modelo.enums.TipoCliente.PREMIUM) {
+        if (tipoCliente == TipoCliente.PREMIUM) {
             nuevoCliente = new ClientePremium(emailText, nombreText, nifText, domicilioText);
         } else {
             nuevoCliente = new ClienteEstandar(emailText, nombreText, nifText, domicilioText);
@@ -57,7 +58,7 @@ public class AddClientes {
 
 
         // TODO Guardar en BBDD
-        // clienteController.addCliente(nuevoCliente); // TODO Revisar controlador
+        // clienteController.addCliente(nuevoCliente);
 
         // TODO Quitar traza de consola
         System.out.println("Cliente guardado: " + nuevoCliente);
