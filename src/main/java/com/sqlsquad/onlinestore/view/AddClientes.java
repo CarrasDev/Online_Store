@@ -7,10 +7,7 @@ import com.sqlsquad.onlinestore.modelo.entity.cliente.ClientePremium;
 import com.sqlsquad.onlinestore.modelo.enums.TipoCliente;
 import com.sqlsquad.onlinestore.util.AppService;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 
 public class AddClientes {
 
@@ -53,16 +50,38 @@ public class AddClientes {
             nuevoCliente = new ClienteEstandar(emailText, nombreText, nifText, domicilioText);
         }
 
-
-
-
-        // TODO Guardar en BBDD
-        // clienteController.addCliente(nuevoCliente);
-
-        // TODO Quitar traza de consola
-        System.out.println("Cliente guardado: " + nuevoCliente);
+        if(!error) {
+            // Si no existe cliente lo guarda
+            if (!clienteController.existeCliente(nuevoCliente.getEmail())) {
+                // TODO Control de trazas, BBDD desconectada
+                System.out.println("Cliente guardado: " + nuevoCliente);
+                // clienteController.addCliente(nuevoCliente);
+            } else {
+                mostrarError("Este Cliente ya existe")
+            }
+        }
     }
 
+    private void mostrarError(String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+        alerta.setTitle("Error");
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
 
+        // Espera interacción del usuario y limpia los campos
+        alerta.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                limpiarCampos();
+            }
+        });
+    }
 
+    private void limpiarCampos() {
+        // TODO Adaptar campos a cliente
+        codigo.setText("");
+        descripcion.setText("");
+        precio.setText("");
+        gastos.setText("");
+        tiempo.setText("");
+    }
 }

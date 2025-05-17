@@ -32,6 +32,7 @@ public class AddArticulos {
 
         // TODO Buscar otra forma de presentar los errores
         // Captamos los datos del formulario
+        // TODO Implementar control para los 2 primeros campos (codigo y descripcion)
         articuloObj.setCodigoArticulo(codigo.getText());
         articuloObj.setDescripcion(descripcion.getText());
         try {
@@ -59,9 +60,10 @@ public class AddArticulos {
         if (!error) {
             // Si no existe articulo lo guarda
             if (!articuloController.existeArticulo(articuloObj.getCodigoArticulo())) {
-                articuloController.addArticulo(articuloObj);
+                // TODO Control de trazas, BBDD desconectada
+                System.out.println("Articulo guardado: " + articuloObj);
+                // articuloController.addArticulo(articuloObj);
             } else {
-                // TODO cambiar metodo
                 mostrarError("Este Artículo ya existe");
             }
         }
