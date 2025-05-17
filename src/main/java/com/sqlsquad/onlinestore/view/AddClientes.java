@@ -6,12 +6,14 @@ import com.sqlsquad.onlinestore.modelo.entity.cliente.ClienteEstandar;
 import com.sqlsquad.onlinestore.modelo.entity.cliente.ClientePremium;
 import com.sqlsquad.onlinestore.modelo.enums.TipoCliente;
 import com.sqlsquad.onlinestore.util.AppService;
+import com.sqlsquad.onlinestore.util.Validator;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 public class AddClientes {
 
     @FXML private TextField email, nombre, nif, domicilio;
+    @FXML private Label emailError, nifError, nombreError, domicilioError;
     @FXML private ToggleGroup tipoClienteGroup;
     @FXML private RadioButton radioPremium, radioEstandar;
     @FXML private Button btnAdd;
@@ -34,15 +36,56 @@ public class AddClientes {
     private void addCliente() {
         boolean error = false;
 
-        String emailText = email.getText(); // Todo verificar que es un email valido y no existe en BBDD
+        // Verificación de campos obligatorios
+        if (nombre.getText().isEmpty()) {
+            nombreError.setText("⚠ Campo obligatorio");
+            error = true;
+        } else {
+            nombreError.setText("");
+        }
+
+        if (domicilio.getText().isEmpty()) {
+            domicilioError.setText("⚠ Campo obligatorio");
+            error = true;
+        } else {
+            domicilioError.setText("");
+        }
+
+        if (email.getText().isEmpty()) {
+            emailError.setText("⚠ Campo obligatorio");
+            error = true;
+        } else if (!Validator.esEmailValido(email.getText())) {
+            emailError.setText("⚠ Formato incorrecto");
+            error = true;
+        } else {
+            emailError.setText("");
+        }
+
+        if (nif.getText().isEmpty()) {
+            nifError.setText("⚠ Campo obligatorio");
+        } else if (!Validator.esDniONieValido(nif.getText())) {
+            nifError.setText("⚠ Formato incorrecto");
+            error = true;
+        } else {
+            nifError.setText("");
+        }
+
+        // Si existen errores no se procesa el Cliente
+        if (error) {
+            return;
+        }
+
+        // Captamos los datos del formulario
+        String emailText = email.getText();
         String nombreText = nombre.getText();
         String nifText = nif.getText();
         String domicilioText = domicilio.getText();
 
-        // Gestión tipo cliente
+        // Obtener tipo de cliente
         String tipoClienteText = ((RadioButton) tipoClienteGroup.getSelectedToggle()).getText();
         TipoCliente tipoCliente = TipoCliente.valueOf(tipoClienteText.toUpperCase());
 
+        // Creación de cliente
         Cliente nuevoCliente;
         if (tipoCliente == TipoCliente.PREMIUM) {
             nuevoCliente = new ClientePremium(emailText, nombreText, nifText, domicilioText);
@@ -50,15 +93,13 @@ public class AddClientes {
             nuevoCliente = new ClienteEstandar(emailText, nombreText, nifText, domicilioText);
         }
 
-        if(!error) {
-            // Si no existe cliente lo guarda
-            if (!clienteController.existeCliente(nuevoCliente.getEmail())) {
+        // Verificar si el cliente ya existe antes de guardarlo
+        if (!clienteController.existeCliente(nuevoCliente.getEmail())) {
                 // TODO Control de trazas, BBDD desconectada
                 System.out.println("Cliente guardado: " + nuevoCliente);
                 // clienteController.addCliente(nuevoCliente);
-            } else {
-                mostrarError("Este Cliente ya existe")
-            }
+        } else {
+                mostrarError("Este Cliente ya existe");
         }
     }
 

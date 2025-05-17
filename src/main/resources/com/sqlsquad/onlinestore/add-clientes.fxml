@@ -13,15 +13,19 @@
 
         <Label layoutX="25.0" layoutY="55.0" text="E-mail" />
         <TextField fx:id="email" layoutX="25.0" layoutY="75.0" />
+        <Label fx:id="emailError" layoutX="180.0" layoutY="80.0" text="" textFill="red" />
 
         <Label layoutX="25.0" layoutY="110.0" text="Nombre" />
         <TextField fx:id="nombre" layoutX="25.0" layoutY="130.0" />
+        <Label fx:id="nombreError" layoutX="180.0" layoutY="135.0" text="" textFill="red" />
 
         <Label layoutX="25.0" layoutY="165.0" text="Nif" />
         <TextField fx:id="nif" layoutX="25.0" layoutY="185.0" />
+        <Label fx:id="niflError" layoutX="180.0" layoutY="190.0" text="" textFill="red" />
 
         <Label layoutX="25.0" layoutY="220.0" text="Domicilio" />
         <TextField fx:id="domicilio" layoutX="25.0" layoutY="240.0" />
+        <Label fx:id="domicilioError" layoutX="180.0" layoutY="245.0" text="" textFill="red" />
 
         <!-- Control de Premium o Estandar -->
         <Label layoutX="25.0" layoutY="275.0" text="Tipo de cliente" />
@@ -34,6 +38,4 @@
                 onAction="#addCliente" prefHeight="25.0" prefWidth="98.0" text="Añadir" />
     </children>
 </AnchorPane>
-
-
 
