@@ -97,6 +97,7 @@ public class AddClientes {
         if (!clienteController.existeCliente(nuevoCliente.getEmail())) {
                 clienteController.addCliente(nuevoCliente);
                 limpiarCampos();
+                radioEstandar.setSelected(true);
         } else {
                 mostrarError("Este Cliente ya existe");
         }
