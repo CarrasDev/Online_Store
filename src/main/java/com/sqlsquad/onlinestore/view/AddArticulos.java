@@ -61,6 +61,7 @@ public class AddArticulos {
             // Si no existe articulo lo guarda
             if (!articuloController.existeArticulo(articuloObj.getCodigoArticulo())) {
                 articuloController.addArticulo(articuloObj);
+                limpiarCampos();
             } else {
                 mostrarError("Este Artículo ya existe");
             }

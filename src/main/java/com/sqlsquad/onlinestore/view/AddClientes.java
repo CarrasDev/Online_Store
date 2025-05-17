@@ -17,7 +17,7 @@ public class AddClientes {
     @FXML private ToggleGroup tipoClienteGroup;
     @FXML private RadioButton radioPremium, radioEstandar;
     @FXML private Button btnAdd;
-    
+
     private ClienteController clienteController;
 
     @FXML
@@ -96,6 +96,7 @@ public class AddClientes {
         // Verificar si el cliente ya existe antes de guardarlo
         if (!clienteController.existeCliente(nuevoCliente.getEmail())) {
                 clienteController.addCliente(nuevoCliente);
+                limpiarCampos();
         } else {
                 mostrarError("Este Cliente ya existe");
         }
