@@ -31,6 +31,11 @@ public class AddClientes {
         radioEstandar.setToggleGroup(tipoClienteGroup);
     }
 
+    // Metodo para recibir el email desde otra vista
+    public void setEmailCliente(String emailCliente) {
+        email.setText(emailCliente);
+    }
+
     @FXML
     private void addCliente() {
         boolean error = false;
