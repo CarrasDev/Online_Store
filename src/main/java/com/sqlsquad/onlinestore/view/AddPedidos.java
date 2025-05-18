@@ -1,8 +1,10 @@
 package com.sqlsquad.onlinestore.view;
 
 import com.sqlsquad.onlinestore.MainViewController;
+import com.sqlsquad.onlinestore.controlador.ArticuloController;
 import com.sqlsquad.onlinestore.controlador.ClienteController;
 import com.sqlsquad.onlinestore.controlador.PedidoController;
+import com.sqlsquad.onlinestore.modelo.entity.Pedido;
 import com.sqlsquad.onlinestore.util.AppService;
 import com.sqlsquad.onlinestore.util.Validator;
 import javafx.fxml.FXML;
@@ -21,6 +23,7 @@ public class AddPedidos {
 
     private PedidoController pedidoController;
     private ClienteController clienteController;
+    private ArticuloController articuloController;
     private MainViewController mainViewController;
 
     // Heredar el controlador de la vista principal para poder cambiar a la vista "add-clientes.fxml"
@@ -33,6 +36,7 @@ public class AddPedidos {
         // Obtenemos el controlador de la capa de servicios
         pedidoController = AppService.getInstance().getPedidoController();
         clienteController = AppService.getInstance().getClienteController();
+        articuloController = AppService.getInstance().getArticuloController();
     }
 
 
@@ -98,36 +102,34 @@ public class AddPedidos {
             if (resultado.isPresent() && resultado.get() == botonSi) {
                 // Cargar la nueva vista en el contenedor 'viewPane'
                 mainViewController.loadView("Add-clientes.fxml");
-                // TODO COntrolar esto
-                try {
 
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Add-clientes.fxml"));
-                    Parent view = loader.load();
-                    // Obtener controlador de la nueva vista
-                    AddClientes controller = loader.getController();
-                    // Pasar email a la nueva vista
-                    controller.setEmailCliente(emailCliente.getText());
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             } else {
                 emailError.setText("⚠ Email inexistente");
-                // TODO return;
+                return;
             }
-
-
         }
 
-        // TODO Capturar los datos del formulario
-        // TODO Pasar a BBDD
+        // Control de existencia de Articulo
+        if(!articuloController.existeArticulo(codigoArticulo.getText())) {
+            articuloError.setText("⚠ Articulo inexistente");
+            return;
+        }
 
+        // Capturar los datos del formulario
+        String emailText = emailCliente.getText();
+        String codigoArticuloText = codigoArticulo.getText();
+        Integer cantidadText = Integer.parseInt(cantidad.getText());
+
+        // Crear pedido
+        pedidoController.addPedido(codigoArticuloText, cantidadText, emailText);
+        limpiarCampos();
+        // TODO Añadir confirmación
 
     }
 
-
-
-
-
-
-} // TODO Final clase
+    private void limpiarCampos() {
+        emailCliente.setText("");
+        codigoArticulo.setText("");
+        cantidad.setText("");
+    }
+}

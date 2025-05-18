@@ -31,32 +31,11 @@ public class PedidoController {
 
     //ACTUALIZA MODELO: Permite añadir un pedido al modelo.
     public void addPedido(String codigoArticulo, Integer cantidadArticulos, String emailCliente) {
-        if (codigoArticulo == null || codigoArticulo.isEmpty()) {
-            // TODO vistaTienda.updateView("Error: Código de artículo inválido");
-            return;
-        }
-        if (emailCliente == null || emailCliente.isEmpty()) {
-            // TODO vistaTienda.updateView("Error: Email del cliente inválido");
-            return;
-        }
+
         Articulo articulo = articuloModel.getArticulo(codigoArticulo);
-        if (articulo == null) {
-            // TODO vistaTienda.updateView("Error: El artículo no existe");
-            return;
-        }
         Cliente cliente = clienteModel.getCliente(emailCliente);
-        if (cliente == null) {
-            // TODO vistaTienda.updateView("Error: El cliente no existe");
-            return;
-        }
-        if (cantidadArticulos == null || cantidadArticulos <= 0) {
-            // TODO vistaTienda.updateView("Error: La cantidad debe ser mayor que cero");
-            return;
-        }
-        // Integer numeroPedido = modeloTienda.generarProximoPedido();
         Pedido pedido = new Pedido(articulo, cantidadArticulos, cliente, LocalDateTime.now(), TipoEstado.PENDIENTE);
         pedidoModel.addPedido(pedido);
-        // TODO vistaTienda.updateView("Pedido añadido");
     }
 
     //ACTUALIZA MODELO:Permite eliminar un pedido del modelo.
