@@ -4,15 +4,11 @@ import com.sqlsquad.onlinestore.MainViewController;
 import com.sqlsquad.onlinestore.controlador.ArticuloController;
 import com.sqlsquad.onlinestore.controlador.ClienteController;
 import com.sqlsquad.onlinestore.controlador.PedidoController;
-import com.sqlsquad.onlinestore.modelo.entity.Pedido;
 import com.sqlsquad.onlinestore.util.AppService;
 import com.sqlsquad.onlinestore.util.Validator;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 
-import java.io.IOException;
 import java.util.Optional;
 
 public class AddPedidos {

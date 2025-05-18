@@ -96,6 +96,7 @@
                 <Button onAction="#handleClientes" text="Añadir Clientes" />
                 <Button onAction="#handleLookClientes" text="Mostrar Clientes" />
                 <Button onAction="#handlePedidos" text="Añadir Pedidos" />
+                <Button onAction="#handleLookPedidos" text="Mostrar Pedidos" />
               </children>
             </VBox>
           </children>

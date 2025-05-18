@@ -1,6 +1,7 @@
 package com.sqlsquad.onlinestore.view;
 
 import com.sqlsquad.onlinestore.controlador.PedidoController;
+import com.sqlsquad.onlinestore.modelo.DTO.PedidoDTO;
 import com.sqlsquad.onlinestore.modelo.entity.Pedido;
 import com.sqlsquad.onlinestore.modelo.enums.TipoEstado;
 import com.sqlsquad.onlinestore.util.AppService;
@@ -45,7 +46,9 @@ public class LookPedidos {
 
     @FXML
     private void cargarPedidos() {
-        ObservableList<Pedido> listaPedidos = FXCollections.observableArrayList();
+        ObservableList<PedidoDTO> listaPedidos = FXCollections.observableArrayList();
+
+        pedidoController.actualizarPedidos();
 
         //convertir cada cliente en un ClienteDTO
         for (Pedido pedido : pedidoController.getListaPedidos()) {
@@ -56,14 +59,19 @@ public class LookPedidos {
         tablaPedidos.setItems(listaPedidos);
 
         // TODO Vincular propiedades observables con la tabla
-        // TODO Pendiente construir PedidoDTO
-        //colNumeroPedido.setCellValueFactory(cellData -> cellData.getValue().);
-
-
+        colNumeroPedido.setCellValueFactory(cellData -> cellData.getValue().numeroPedidoProperty().asObject());
+        colEmail.setCellValueFactory(cellData -> cellData.getValue().emailClienteProperty());
+        colArticulo.setCellValueFactory(cellData -> cellData.getValue().codigoArticuloProperty());
+        colCantidad.setCellValueFactory(cellData -> cellData.getValue().cantidadArticulosProperty().asObject());
+        colPrecioTotal.setCellValueFactory(cellData -> cellData.getValue().precioTotalProperty().asObject());
+        colFechaPedido.setCellValueFactory(cellData -> cellData.getValue().fechaPedidoProperty());
+        colTipoEstado.setCellValueFactory(cellData -> cellData.getValue().tipoEstadoProperty());
     }
 
     private void filtrarPedidos() {
         ObservableList<PedidoDTO> listaPedidos = FXCollections.observableArrayList();
+
+        pedidoController.actualizarPedidos();
 
         String filtro = filtroTipoEstado.getValue();
 
@@ -76,8 +84,4 @@ public class LookPedidos {
         }
         tablaPedidos.setItems(listaPedidos);
     }
-
-
-
-
 }

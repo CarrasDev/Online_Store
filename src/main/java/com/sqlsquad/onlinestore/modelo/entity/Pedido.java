@@ -108,6 +108,14 @@ public class Pedido {
         return articulo;
     }
 
+    public String getCodigoArticulo() {
+        return articulo.getCodigoArticulo();
+    }
+
+    public String getEmailCliente() {
+        return cliente.getEmail();
+    }
+
     private void setArticulo(Articulo articulo) {
         this.articulo = articulo;
     }

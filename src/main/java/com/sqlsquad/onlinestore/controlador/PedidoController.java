@@ -42,8 +42,9 @@ public class PedidoController {
         return pedidoModel.getPedidos();
     }
 
-
-
+    public void actualizarPedidos(){
+        pedidoModel.actualizarPedidos();
+    }
 
 
 
