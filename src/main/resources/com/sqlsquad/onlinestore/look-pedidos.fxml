@@ -3,16 +3,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.sqlsquad.onlinestore.view.LookPedidos">
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sqlsquad.onlinestore.view.LookPedidos">
     <children>
         <Label layoutX="20.0" layoutY="16.0" text="Mostrar Pedidos" />
         <Label layoutX="530.0" layoutY="18.0" text="Mostrar:" />
+        <Label layoutX="200.0" layoutY="18.0" text="Filtrar email:" />
+        <TextField fx:id="emailFiltro" layoutX="273.0" layoutY="14.0" prefHeight="25.0" prefWidth="162.0" />
         <!-- ComboBox para seleccionar filtro -->
         <ComboBox fx:id="filtroTipoEstado" layoutX="590.0" layoutY="14.0" prefWidth="150" promptText="Filtrar por" />
         <!-- Tabla Clientes -->
-        <TableView fx:id="tablaPedidos" layoutX="20" layoutY="50" prefHeight="585.0" prefWidth="750.0">
+        <TableView fx:id="tablaPedidos" layoutX="20.0" layoutY="50.0" prefHeight="585.0" prefWidth="750.0">
             <columns>
                 <TableColumn fx:id="colNumeroPedido" text="Nº Pedido" />
                 <TableColumn fx:id="colEmail" text="Email Cliente" />

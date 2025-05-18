@@ -11,8 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
-import java.time.LocalDateTime;
 
 public class LookPedidos {
 
@@ -25,6 +25,7 @@ public class LookPedidos {
     @FXML private TableColumn<PedidoDTO, String> colFechaPedido;
     @FXML private TableColumn<PedidoDTO, String> colTipoEstado;
 
+    @FXML private TextField emailFiltro;
     @FXML private ComboBox<String> filtroTipoEstado;
 
     private PedidoController pedidoController;

@@ -5,13 +5,14 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sqlsquad.onlinestore.view.LookArticulos">
     <children>
-        <TableView fx:id="tablaArticulos" layoutX="20" layoutY="50" prefHeight="380.0" prefWidth="580.0">
+        <Label layoutX="20.0" layoutY="16.0" text="Mostrar Artículos" />
+        <TableView fx:id="tablaArticulos" layoutX="20" layoutY="50" prefHeight="585.0" prefWidth="750.0">
             <columns>
                 <TableColumn fx:id="colCodigo" prefWidth="71.0" text="Código" />
-                <TableColumn fx:id="colDescripcion" prefWidth="221.0" text="Descripción" />
-                <TableColumn fx:id="colPrecio" minWidth="7.0" prefWidth="79.0" text="Precio Venta" />
-                <TableColumn fx:id="colGastos" text="Gastos Envío" />
-                <TableColumn fx:id="colTiempo" prefWidth="125.0" text="Tiempo Preparación" />
+                <TableColumn fx:id="colDescripcion" prefWidth="234.0" text="Descripción" />
+                <TableColumn fx:id="colPrecio" minWidth="7.0" prefWidth="90.0" text="Precio Venta" />
+                <TableColumn fx:id="colGastos" prefWidth="82.0" text="Gastos Envío" />
+                <TableColumn fx:id="colTiempo" prefWidth="146.0" text="Tiempo Preparación" />
             </columns>
         </TableView>
     </children>
