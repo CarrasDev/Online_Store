@@ -56,7 +56,7 @@ public class MainViewController {
      * Metodo para cargar una vista FXML en el contenedor 'viewPane'
      * @param fxmlFile El nombre del archivo FXML a cargar
      */
-    private void loadView(String fxmlFile) {
+    public void loadView(String fxmlFile) {
         try {
             // Cargar el contenido de la vista
             Parent view = FXMLLoader.load(getClass().getResource(fxmlFile));
