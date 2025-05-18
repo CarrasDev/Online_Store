@@ -1,5 +1,6 @@
 package com.sqlsquad.onlinestore;
 
+import com.sqlsquad.onlinestore.view.AddPedidos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,6 +57,36 @@ public class MainViewController {
      * Metodo para cargar una vista FXML en el contenedor 'viewPane'
      * @param fxmlFile El nombre del archivo FXML a cargar
      */
+
+
+    public void loadView(String fxmlFile) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent view = loader.load();
+
+            // Obtener el controlador de la nueva vista
+            Object controller = loader.getController();
+
+            // Si el controlador es de tipo 'AddPedidos', pásale la instancia de 'MainViewController'
+            // Permite que la vista 'AddPedidos' pueda acceder a la vista 'MainViewController' Para crear un nuevo cliente
+            if (controller instanceof AddPedidos) {
+                ((AddPedidos) controller).setMainViewController(this);
+            }
+
+            viewPane.getChildren().clear();
+            viewPane.getChildren().add(view);
+            // Aseguramos que la vista se redimensione (anclándola a los 4 lados)
+            AnchorPane.setTopAnchor(view, 0.0);
+            AnchorPane.setRightAnchor(view, 0.0);
+            AnchorPane.setBottomAnchor(view, 0.0);
+            AnchorPane.setLeftAnchor(view, 0.0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // TODO Anterior carga de ventanas en viewPane
+    /*
     public void loadView(String fxmlFile) {
         try {
             // Cargar el contenido de la vista
@@ -71,5 +102,8 @@ public class MainViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
+
+
+
