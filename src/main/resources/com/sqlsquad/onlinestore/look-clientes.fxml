@@ -3,7 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sqlsquad.onlinestore.view.LookClientes">
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.sqlsquad.onlinestore.view.LookClientes">
     <children>
         <Label layoutX="20.0" layoutY="16.0" text="Mostrar Clientes" />
         <Label layoutX="530.0" layoutY="18.0" text="Mostrar:" />

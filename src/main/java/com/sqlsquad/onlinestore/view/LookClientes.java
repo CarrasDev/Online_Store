@@ -53,7 +53,7 @@ public class LookClientes {
             listaClientes.add(new ClienteDTO(cliente));
         }
 
-        // Agregamos la lista convertida
+        // Actualizamos la tabla en la vista
         tablaClientes.setItems(listaClientes);
 
         // Vincular propiedades observables con la tabla

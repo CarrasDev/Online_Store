@@ -53,6 +53,11 @@ public class MainViewController {
         loadView("add-pedidos.fxml");
     }
 
+    @FXML
+    private void handleLookPedidos(ActionEvent event) {
+        loadView("look-pedidos.fxml");
+    }
+
     /**
      * Metodo para cargar una vista FXML en el contenedor 'viewPane'
      * @param fxmlFile El nombre del archivo FXML a cargar
@@ -84,25 +89,6 @@ public class MainViewController {
             e.printStackTrace();
         }
     }
-
-    // TODO Anterior carga de ventanas en viewPane
-    /*
-    public void loadView(String fxmlFile) {
-        try {
-            // Cargar el contenido de la vista
-            Parent view = FXMLLoader.load(getClass().getResource(fxmlFile));
-            // Limpiar el contenedor (viewPane) y agregar la nueva vista
-            viewPane.getChildren().clear();
-            viewPane.getChildren().add(view);
-            // Aseguramos que la vista se redimensione (anclándola a los 4 lados)
-            AnchorPane.setTopAnchor(view, 0.0);
-            AnchorPane.setRightAnchor(view, 0.0);
-            AnchorPane.setBottomAnchor(view, 0.0);
-            AnchorPane.setLeftAnchor(view, 0.0);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
 }
 
 

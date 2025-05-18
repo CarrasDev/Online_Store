@@ -38,6 +38,20 @@ public class PedidoController {
         pedidoModel.addPedido(pedido);
     }
 
+    public List<Pedido> getListaPedidos(){
+        return pedidoModel.getPedidos();
+    }
+
+
+
+
+
+
+
+
+
+
+
     //ACTUALIZA MODELO:Permite eliminar un pedido del modelo.
     //Un pedido puede ser borrado únicamente si no ha sido enviado, es decir, si el tiempo transcurrido a desde
     // la fecha y hora del pedido no supera el tiempo de preparación para el envío del artículo.
@@ -66,9 +80,7 @@ public class PedidoController {
         return pedido.getEstado() != TipoEstado.ENVIADO;
     }
 
-    private <E> List<E> getListaPedidos(){
-        return (List<E>)pedidoModel.getPedidos();
-    }
+
 
     //Llama al metodo correcto en base al emailCliente
     public void mostrarPedidosPendientes(String emailCliente) {
