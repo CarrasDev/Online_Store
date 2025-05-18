@@ -22,7 +22,7 @@ public class LookPedidos {
     @FXML private TableColumn<PedidoDTO, String> colArticulo;
     @FXML private TableColumn<PedidoDTO, Integer> colCantidad;
     @FXML private TableColumn<PedidoDTO, Double> colPrecioTotal;
-    @FXML private TableColumn<PedidoDTO, LocalDateTime> colFechaPedido;
+    @FXML private TableColumn<PedidoDTO, String> colFechaPedido;
     @FXML private TableColumn<PedidoDTO, String> colTipoEstado;
 
     @FXML private ComboBox<String> filtroTipoEstado;
