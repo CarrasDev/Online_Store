@@ -8,10 +8,9 @@ import com.sqlsquad.onlinestore.util.AppService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import java.util.Optional;
 
 
 public class LookPedidos {
@@ -43,6 +42,33 @@ public class LookPedidos {
 
         // Carga inicial
         cargarPedidos();
+
+        // Evento de menú contextual para eliminar Pedidos
+        tablaPedidos.setRowFactory(tv -> {
+            TableRow<PedidoDTO> row = new TableRow<>();
+            ContextMenu contextMenu = new ContextMenu();
+
+            MenuItem eliminarItem = new MenuItem("Eliminar");
+            eliminarItem.setOnAction(event -> {
+                // Obtener el PedidoDTO de la fila seleccionada
+                PedidoDTO pedidoSeleccionado = row.getItem();
+                if (pedidoSeleccionado != null) {
+                    // Emitimos un mensaje de alerta para asegurar eliminación
+                    confirmarDelete(pedidoSeleccionado);
+                }
+            });
+
+            // Agregamos la función eliminar al menú contextual
+            contextMenu.getItems().add(eliminarItem);
+
+            // Solo se muestra el menú en filas no vacías
+            row.contextMenuProperty().bind(
+                    javafx.beans.binding.Bindings.when(row.emptyProperty())
+                            .then((ContextMenu) null)
+                            .otherwise(contextMenu)
+            );
+            return row;
+        });
     }
 
     @FXML
@@ -84,5 +110,31 @@ public class LookPedidos {
             }
         }
         tablaPedidos.setItems(listaPedidos);
+    }
+
+    private void confirmarDelete(PedidoDTO pedidoSeleccionado) {
+        // Mensaje emergente con confirmación de eliminación de pedido
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setTitle("Eliminar Pedido...");
+        alerta.setHeaderText("Va ha eliminar el pedido nº " + pedidoSeleccionado.numeroPedidoProperty().get());
+        alerta.setContentText("¿Está seguro de querer eliminarlo?");
+
+        // Definir botones de respuesta
+        ButtonType botonSi = new ButtonType("Si");
+        ButtonType botonNo = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alerta.getButtonTypes().setAll(botonSi, botonNo);
+
+        //Mostrar alerta y esperar respuesta del usuario
+        Optional<ButtonType> resultado = alerta.showAndWait();
+
+        if (resultado.isPresent() && resultado.get() == botonSi) {
+            // Eliminar el registro de la BBDD
+            boolean control = false;
+            control = pedidoController.removePedido(pedidoSeleccionado.numeroPedidoProperty().get());
+            if (control) {
+                // Eliminar el registro del ObservableList
+                tablaPedidos.getItems().remove(pedidoSeleccionado);
+            }
+        }
     }
 }

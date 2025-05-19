@@ -46,42 +46,17 @@ public class PedidoController {
         pedidoModel.actualizarPedidos();
     }
 
+    public boolean removePedido(Integer numeroPedido) {
+        return pedidoModel.eliminarPedido(numeroPedido);
+    }
 
-
-
-
-
-
-
-    //ACTUALIZA MODELO:Permite eliminar un pedido del modelo.
-    //Un pedido puede ser borrado únicamente si no ha sido enviado, es decir, si el tiempo transcurrido a desde
-    // la fecha y hora del pedido no supera el tiempo de preparación para el envío del artículo.
-    public void removePedido(Integer numeroPedido) {
-        if(esBorrable(numeroPedido)){
-            pedidoModel.eliminarPedido(numeroPedido);
-            // TODO vistaTienda.updateView("Pedido eliminado \n");
-        } else {
-            // TODO vistaTienda.updateView("No es posible borrar el pedido \n");
-        }
+    private Pedido getPedido(Integer numeroPedido) {
+        return pedidoModel.getPedido(numeroPedido);
     }
 
 
-//Métodos que toman info del modelo
-
-    //Recupera pedido del modelo
-    private <T> T getPedido(Integer numeroPedido) {
-        return ((T) pedidoModel.getPedido(numeroPedido));
-    }
-
-    // Eliminar Pedido. Un pedido puede ser borrado únicamente si no ha sido enviado, es decir,
-    // si el tiempo transcurrido a desde la fecha y hora del pedido no supera el tiempo de preparación
-    // para el envío del artículo.
-    private boolean esBorrable(int numeroPedido){
-        Pedido pedido = getPedido(numeroPedido);
-        return pedido.getEstado() != TipoEstado.ENVIADO;
-    }
-
-
+  // TODO Eliminar si es necesario
+/*
 
     //Llama al metodo correcto en base al emailCliente
     public void mostrarPedidosPendientes(String emailCliente) {
@@ -160,6 +135,6 @@ public class PedidoController {
             }
         }
         // TODO vistaTienda.updateView(sb.toString());
-    }
+    }*/
 
 }
