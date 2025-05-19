@@ -136,9 +136,12 @@ public class LookPedidos {
             // Eliminar el registro de la BBDD
             boolean control = false;
             control = pedidoController.removePedido(pedidoSeleccionado.numeroPedidoProperty().get());
+
             if (control) {
                 // Eliminar el registro del ObservableList
-                tablaPedidos.getItems().remove(pedidoSeleccionado);
+                listaPedidos.remove(pedidoSeleccionado);
+                pedidosFiltrados.setPredicate(pedidosFiltrados.getPredicate());
+
             } else {
                 mostrarError("No se pudo eliminar el pedido");
             }

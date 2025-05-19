@@ -113,10 +113,10 @@
           </content>
         </ScrollPane>
 
-        <!-- DETAILS: Área para mostrar información adicional -->
+        <!-- TODO DETAILS: Área para mostrar información adicional -->
         <AnchorPane fx:id="detailsPane">
           <children>
-            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="-fx-font-size: 16;" text="Detalles" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" />
+            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="-fx-font-size: 16;" text="" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" />
           </children>
         </AnchorPane>
       </items>
@@ -125,7 +125,7 @@
     <!-- Barra de estado inferior -->
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
       <children>
-        <Label maxHeight="Infinity" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+        <Label maxHeight="Infinity" maxWidth="-1.0" text="" HBox.hgrow="ALWAYS">
           <font>
             <Font fx:id="statusFontLeft" size="11.0" />
           </font>
@@ -134,7 +134,7 @@
           </textFill>
         </Label>
         <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
-        <Label font="$statusFontLeft" maxWidth="-1.0" text="Right status" textFill="$statusColorLeft" HBox.hgrow="NEVER" />
+        <Label font="$statusFontLeft" maxWidth="-1.0" text="" textFill="$statusColorLeft" HBox.hgrow="NEVER" />
       </children>
       <padding>
         <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
