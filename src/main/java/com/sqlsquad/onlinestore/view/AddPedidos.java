@@ -67,6 +67,7 @@ public class AddPedidos {
                 Integer cantidadValor = Integer.parseInt(cantidad.getText());
                 if (cantidadValor <= 0) {
                     cantidadError.setText("⚠ Valor incorrecto");
+                    error = true;
                 }
             } catch (NumberFormatException e) {
                 cantidadError.setText("⚠ Valor incorrecto");

@@ -30,28 +30,81 @@ public class AddArticulos {
         // TODO Buscar otra forma de presentar los errores
         // Captamos los datos del formulario
         // TODO Implementar control para los 2 primeros campos (codigo y descripcion)
+
+        // Verificación de campos obligatorios
+        if (codigo.getText().isEmpty()) {
+            codigoError.setText("⚠ Campo obligatorio");
+            error = true;
+        } else {
+            codigoError.setText("");
+        }
+
+        if (descripcion.getText().isEmpty()) {
+            descripcionError.setText("⚠ Campo obligatorio");
+        } else {
+            descripcionError.setText("");
+        }
+
+        if (precio.getText().isEmpty()) {
+            precioError.setText("⚠ Campo obligatorio");
+        } else {
+            precioError.setText("");
+            try {
+                Float precioValor = Float.parseFloat(precio.getText().replace(",", "."));
+                if (precioValor <= 0) {
+                    precioError.setText("⚠ Valor incorrecto");
+                    error = true;
+                }
+            } catch (NumberFormatException e) {
+                precioError.setText("⚠ Valor incorrecto");
+                error = true;
+            }
+        }
+
+        if (gastos.getText().isEmpty()) {
+            gastosError.setText("⚠ Campo obligatorio");
+        } else {
+            gastosError.setText("");
+            try {
+                Float gastosValor = Float.parseFloat(gastos.getText().replace(",", "."));
+                if (gastosValor <= 0) {
+                    gastosError.setText("⚠ Valor incorrecto");
+                    error = true;
+                }
+            } catch (NumberFormatException e) {
+                gastosError.setText("⚠ Valor incorrecto");
+                error = true;
+            }
+        }
+
+        if (tiempo.getText().isEmpty()) {
+            tiempoError.setText("⚠ Campo obligatorio");
+        } else {
+            tiempoError.setText("");
+            try {
+                Integer tiempoValor = Integer.parseInt(tiempo.getText());
+                if (tiempoValor <= 0) {
+                    tiempoError.setText("⚠ Valor incorrecto");
+                    error = true;
+                }
+            } catch (NumberFormatException e) {
+                tiempoError.setText("⚠ Valor incorrecto");
+                error = true;
+            }
+        }
+
+        // Si existen errores no se procesa el Articulo
+        if (error) {
+            return;
+        }
+
+        // Captar valores del formulario
         articuloObj.setCodigoArticulo(codigo.getText());
         articuloObj.setDescripcion(descripcion.getText());
-        try {
-            String precioText = precio.getText().replace(",", ".");   // Control de "," en el precio"
-            articuloObj.setPrecioVenta(Float.parseFloat(precioText));
-        } catch (NumberFormatException e) {
-            precio.setText(precio.getText() + " (Valor incorrecto)");
-            error = true;
-        }
-        try {
-            String gastosText = gastos.getText().replace(",", ".");    // Control de "," en los gastos""
-            articuloObj.setGastosEnvio(Float.parseFloat(gastosText));
-        } catch (NumberFormatException e) {
-            gastos.setText(gastos.getText() + " (Valor incorrecto)");
-            error = true;
-        }
-        try {
-            articuloObj.setTiempoPreparacion(Integer.parseInt(tiempo.getText()));
-        } catch (NumberFormatException e) {
-            tiempo.setText(tiempo.getText() + " (Valor incorrecto)");
-            error = true;
-        }
+        articuloObj.setPrecioVenta(Float.parseFloat(precio.getText().replace(",", ".")));
+        articuloObj.setTiempoPreparacion(Integer.parseInt(tiempo.getText()));
+        articuloObj.setGastosEnvio(Float.parseFloat(gastos.getText().replace(",", ".")));
+
 
         // Si no existe error proseguimos
         if (!error) {
