@@ -12,18 +12,23 @@
 
         <Label layoutX="25.0" layoutY="55.0" text="Código de artículo" />
         <TextField fx:id="codigo" layoutX="25.0" layoutY="75.0" />
+        <Label fx:id="codigoError" layoutX="180.0" layoutY="80.0" text="" textFill="red" />
 
         <Label layoutX="25.0" layoutY="110.0" text="Descripción" />
         <TextField fx:id="descripcion" layoutX="25.0" layoutY="130.0" />
+        <Label fx:id="descripcionError" layoutX="180.0" layoutY="135.0" text="" textFill="red" />
 
         <Label layoutX="25.0" layoutY="165.0" text="Precio de venta" />
         <TextField fx:id="precio" layoutX="25.0" layoutY="185.0" />
+        <Label fx:id="precioError" layoutX="180.0" layoutY="190.0" text="" textFill="red" />
 
         <Label layoutX="25.0" layoutY="220.0" text="Gastos de envío" />
         <TextField fx:id="gastos" layoutX="25.0" layoutY="240.0" />
+        <Label fx:id="gastosError" layoutX="180.0" layoutY="245.0" text="" textFill="red" />
 
         <Label layoutX="25.0" layoutY="275.0" text="Tiempo de preparación" />
         <TextField fx:id="tiempo" layoutX="25.0" layoutY="295.0" />
+        <Label fx:id="tiempoError" layoutX="180.0" layoutY="300.0" text="" textFill="red" />
 
       <Button fx:id="btnAdd" layoutX="51.0" layoutY="338.0" mnemonicParsing="false"
               prefHeight="25.0" prefWidth="98.0" text="Añadir"

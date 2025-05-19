@@ -4,16 +4,13 @@ import com.sqlsquad.onlinestore.controlador.ArticuloController;
 import com.sqlsquad.onlinestore.modelo.entity.Articulo;
 import com.sqlsquad.onlinestore.util.AppService;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 
 public class AddArticulos {
 
-    @FXML
-    private TextField codigo, descripcion, precio, gastos, tiempo;
+    @FXML private TextField codigo, descripcion, precio, gastos, tiempo;
+    @FXML private Label codigoError, descripcionError, precioError, gastosError, tiempoError;
     @FXML private Button btnAdd;
 
     private ArticuloController articuloController;
