@@ -88,15 +88,15 @@
         <!-- MASTER: Menú de navegación -->
         <AnchorPane fx:id="masterPane">
           <children>
-            <VBox fx:id="menuVBox" layoutX="10.0" layoutY="10.0" prefWidth="150" spacing="10">
+            <VBox fx:id="menuVBox" layoutX="20.0" layoutY="10.0" prefWidth="150" spacing="10">
               <children>
                 <Label style="-fx-font-size: 18;" text="Menú" />
-                <Button onAction="#handleArticulos" text="Añadir Artículos" />
-                <Button onAction="#handleLookArticulos" text="Mostrar Artículos" />
-                <Button onAction="#handleClientes" text="Añadir Clientes" />
-                <Button onAction="#handleLookClientes" text="Mostrar Clientes" />
-                <Button onAction="#handlePedidos" text="Añadir Pedidos" />
-                <Button onAction="#handleLookPedidos" text="Mostrar Pedidos" />
+                <Button onAction="#handleArticulos" text="Añadir Artículos" prefWidth="130"/>
+                <Button onAction="#handleLookArticulos" text="Mostrar Artículos" prefWidth="130"/>
+                <Button onAction="#handleClientes" text="Añadir Clientes" prefWidth="130"/>
+                <Button onAction="#handleLookClientes" text="Mostrar Clientes" prefWidth="130"/>
+                <Button onAction="#handlePedidos" text="Añadir Pedidos" prefWidth="130"/>
+                <Button onAction="#handleLookPedidos" text="Mostrar Pedidos" prefWidth="130"/>
               </children>
             </VBox>
           </children>

@@ -54,7 +54,7 @@ public class LookPedidos {
 
         cargarPedidos();
 
-        // TODO Vincular las columnas
+        // Vincular las columnas
         colNumeroPedido.setCellValueFactory(cellData -> cellData.getValue().numeroPedidoProperty().asObject());
         colEmail.setCellValueFactory(cellData -> cellData.getValue().emailClienteProperty());
         colArticulo.setCellValueFactory(cellData -> cellData.getValue().codigoArticuloProperty());
@@ -116,7 +116,7 @@ public class LookPedidos {
             return coincideEstado && coincideEmail;
         });
     }
-    
+
     private void confirmarDelete(PedidoDTO pedidoSeleccionado) {
         // Mensaje emergente con confirmación de eliminación de pedido
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);

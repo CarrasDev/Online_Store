@@ -15,7 +15,6 @@ import java.util.Objects;
 
 public class PedidoController {
 
-    // TODO variables --> Modificar uso de Vista según proceda
     private final PedidoModel pedidoModel;
     private final ArticuloModel articuloModel;
     private final ClienteModel clienteModel;
@@ -53,88 +52,4 @@ public class PedidoController {
     private Pedido getPedido(Integer numeroPedido) {
         return pedidoModel.getPedido(numeroPedido);
     }
-
-
-  // TODO Eliminar si es necesario
-/*
-
-    //Llama al metodo correcto en base al emailCliente
-    public void mostrarPedidosPendientes(String emailCliente) {
-        if ("T".equalsIgnoreCase(emailCliente)){
-            mostrarTodosLosPedidosPendientes();
-        } else {
-            if (!clienteModel.existeCliente(emailCliente)) {
-                // TODO vistaTienda.updateView("El cliente con email '" + emailCliente + "' no está registrado.\n");
-                return;
-            }
-            mostrarPedidoPendientesPorCliente(emailCliente);
-        }
-    }
-
-    //ACTUALIZA VISTA: con listado de pedidos pendientes filtrando por cliente
-    private void mostrarPedidoPendientesPorCliente(String emailCliente) {
-        pedidoModel.actualizarPedidos();
-        List<Pedido> listaPedidos = getListaPedidos();
-        StringBuilder sb = new StringBuilder();
-        for (Pedido pedido : listaPedidos) {
-            if ((Objects.equals(pedido.getCliente().getEmail(), emailCliente))&&(pedido.getEstado()==TipoEstado.PENDIENTE)){
-                sb.append(pedido.toString()).append("\n");
-            }
-        }
-        // TODO vistaTienda.updateView(sb.toString());
-    }
-
-    //ACTUALIZA VISTA: con listado de todos los pedidos pendientes
-    private void mostrarTodosLosPedidosPendientes() {
-        pedidoModel.actualizarPedidos();
-        List<Pedido> listaPedidos = getListaPedidos();
-        StringBuilder sb = new StringBuilder();
-        for (Pedido pedido : listaPedidos) {
-            if (pedido.getEstado()==TipoEstado.PENDIENTE){
-                sb.append(pedido.toString()).append("\n");
-            }
-        }
-        // TODO vistaTienda.updateView(sb.toString());
-    }
-
-    //Llama al metodo correcto en base al emailCliente
-    public void mostrarPedidosEnviados(String emailCliente) {
-        pedidoModel.actualizarPedidos();
-        if ("T".equalsIgnoreCase(emailCliente)){
-            mostrarTodosLosPedidosEnviados();
-        } else {
-            if (!clienteModel.existeCliente(emailCliente)) {
-                // TODO vistaTienda.updateView("El cliente con email '" + emailCliente + "' no está registrado.\n");
-                return;
-            }
-            mostrarPedidoEnviadosPorCliente(emailCliente);
-        }
-    }
-
-    //ACTUALIZA VISTA:Crea listado de los pedidos enviados filtrados por cliente actualizando la vista
-    private void mostrarPedidoEnviadosPorCliente(String emailCliente) {
-        pedidoModel.actualizarPedidos();
-        List<Pedido> listaPedidos = getListaPedidos();
-        StringBuilder sb = new StringBuilder();
-        for (Pedido pedido : listaPedidos) {
-            if ((Objects.equals(pedido.getCliente().getEmail(), emailCliente))&&(pedido.getEstado()==TipoEstado.ENVIADO)){
-                sb.append(pedido.toString()).append("\n");
-            }
-        }
-        // TODO vistaTienda.updateView(sb.toString());
-    }
-
-    ////ACTUALIZA VISTA: Crea listado de todos los pedidos enviados actualizando la vista
-    private void mostrarTodosLosPedidosEnviados() {
-        pedidoModel.actualizarPedidos();
-        List<Pedido> listaPedidos = getListaPedidos();
-        StringBuilder sb = new StringBuilder();
-        for (Pedido pedido : listaPedidos) {
-            if (pedido.getEstado()==TipoEstado.ENVIADO){
-                sb.append("%s\n".formatted(pedido.toString()));
-            }
-        }
-        // TODO vistaTienda.updateView(sb.toString());
-    }*/
-
 }
