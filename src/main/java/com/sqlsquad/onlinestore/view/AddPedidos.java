@@ -40,7 +40,6 @@ public class AddPedidos {
     public void addPedido() {
         boolean error = false;
 
-        // TODO Implementar validaciones de campos
         // Verificación de campos obligatorios
         if (emailCliente.getText().isEmpty()) {
             emailError.setText("⚠ Campo obligatorio");

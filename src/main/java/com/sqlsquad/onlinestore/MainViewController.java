@@ -19,8 +19,8 @@ public class MainViewController {
     // Metodo de inicialización: se invoca cuando se carga el FXML
     @FXML
     public void initialize() {
-        // Cargamos una vista predeterminada, por ejemplo, la vista de Artículos. // TODO Si hay tiempo una vista de presentación
-        loadView("add-articulos.fxml");
+        // Cargamos una vista predeterminada, por ejemplo, la vista de Artículos.
+         loadView("add-articulos.fxml");
     }
 
     // Maneja el clic en el botón "Artículos"

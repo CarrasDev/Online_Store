@@ -27,10 +27,6 @@ public class AddArticulos {
     private void AddArticulo() {
         boolean error = false;
 
-        // TODO Buscar otra forma de presentar los errores
-        // Captamos los datos del formulario
-        // TODO Implementar control para los 2 primeros campos (codigo y descripcion)
-
         // Verificación de campos obligatorios
         if (codigo.getText().isEmpty()) {
             codigoError.setText("⚠ Campo obligatorio");
