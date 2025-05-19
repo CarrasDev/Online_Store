@@ -134,7 +134,18 @@ public class LookPedidos {
             if (control) {
                 // Eliminar el registro del ObservableList
                 tablaPedidos.getItems().remove(pedidoSeleccionado);
+            } else {
+                mostrarError("No se pudo eliminar el pedido");
             }
         }
     }
+
+    private void mostrarError(String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+        alerta.setTitle("Eliminar Pedido...");
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
+    }
+
 }
