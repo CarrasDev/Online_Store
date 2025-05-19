@@ -112,7 +112,7 @@ public class LookPedidos {
             boolean coincideEstado = filtroEstado.equals("todos")
                     || filtroEstado.equals(pedidoDTO.tipoEstadoProperty().get().toLowerCase());
             boolean coincideEmail = filtroEmail.isEmpty()
-                    || filtroEmail.equals(pedidoDTO.emailClienteProperty().get().toLowerCase());
+                    || pedidoDTO.emailClienteProperty().get().toLowerCase().contains(filtroEmail);
             return coincideEstado && coincideEmail;
         });
     }
