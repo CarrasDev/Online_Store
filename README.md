@@ -7,6 +7,7 @@ El proyecto está estructurado siguiendo el patrón de arquitectura MVC (Modelo-
 ## Descripción
 
 Esta aplicación permite la gestión de artículos, clientes y pedidos en una tienda online. Incluye funcionalidades para añadir, visualizar y eliminar registros, así como filtrado y validación de datos. El proyecto sigue una arquitectura MVC y utiliza patrones DAO para el acceso a datos.
+- **El producto 1** (No se muestra en este repositorio) consistió en la fase de análisis y diseño del proyecto, donde se definieron los requisitos, casos de uso y diagramas UML (clases, casos de uso y secuencia). Esta fase fue crucial para sentar las bases del desarrollo posterior.
 - **El producto 2** consistió en la codificación de las clases de modelo con almacenamiento en listas y sin persistencia. Todo ello con una interfaz de consola y una arquitectura MVC básica.
 - **El producto 3** se centró en la implementación de la persistencia de datos utilizando JDBC y MySQL, permitiendo la gestión de artículos, clientes y pedidos de forma persistente sobre una base de datos que creamos para el proyecto. En esta fase se mejoró la estructura del proyecto y se añadieron validaciones básicas para evitar datos erróneos, así como ataques de inyección SQL.
 - **El producto 4** consistió en implementar la persistencia mediante ORM (Hibernate), mejorando la gestión de las entidades y sus relaciones. Para ello, mapeamos nuestras clases de modelo y reicimos los DAOs para trabajar con Hibernate.
@@ -121,6 +122,9 @@ Para ejecutar los tests unitarios:
 Las pruebas principales están en [test/PedidoTest.java](test/PedidoTest.java).
 
 ## Capturas de pantalla
+
+
+
 
 ## Créditos
 
