@@ -121,10 +121,16 @@ Para ejecutar los tests unitarios:
 
 Las pruebas principales están en [test/PedidoTest.java](test/PedidoTest.java).
 
-## Capturas de pantalla
+## Video de demostración
+
+Dejo un video de demostración de gran parte de las funcionalidades de la aplicación:
+
+[![Ver video de demostración](https://img.youtube.com/vi/KmxfsbXsp5Y/0.jpg)](https://www.youtube.com/watch?v=KmxfsbXsp5Y)
 
 
+## Errores cometidos y lecciones aprendidas
 
+- Una vez terminado el proyecto, me di cuenta de que estabamos exponiendo nuestra contraseña de la base de datos en el archivo `hibernate.cfg.xml`. Para evitar esto, es recomendable utilizar variables de entorno o un archivo de configuración externo que no se incluya en el control de versiones. Esto mejora la seguridad y facilita el cambio de credenciales sin modificar el código fuente. **Para futuras ocasiones, implementaré esta práctica desde el inicio del proyecto.** - CarrasDev
 
 ## Créditos
 
@@ -135,4 +141,6 @@ Proyecto creado por::
 
 ---
 
-> Para cualquier duda o sugerencia, contacta con los autores o abre un issue en el repositorio.
+> Para cualquier duda o sugerencia, contacta con nosotros o abre un issue en el repositorio.
+
+¡¡Gracias por visitar nuestro proyecto!! 😊
