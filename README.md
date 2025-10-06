@@ -123,7 +123,8 @@ Las pruebas principales están en [test/PedidoTest.java](test/PedidoTest.java).
 
 ## Video de demostración
 
-Dejo un video de demostración de gran parte de las funcionalidades de la aplicación:
+Dejo un video de demostración de gran parte de las funcionalidades de la aplicación:<br>
+Se in
 
 [![Ver video de demostración](https://img.youtube.com/vi/KmxfsbXsp5Y/0.jpg)](https://www.youtube.com/watch?v=KmxfsbXsp5Y)
 
@@ -136,7 +137,7 @@ Dejo un video de demostración de gran parte de las funcionalidades de la aplica
 
 Proyecto creado por::
 
-- Vanesa Sierra ([Sierra Trace](https://github.com/sierratrace))
+- Vanesa Sierra ([SierraTrace](https://github.com/sierratrace))
 - Daniel Carrasco ([CarrasDev](https://github.com/CarrasDev))
 
 ---
